@@ -10,14 +10,14 @@ const bcrypt = require("bcrypt");
 const MongoStore = require("connect-mongo");
 
 const LocalStrategy = require("passport-local").Strategy;
-const User = require("./models/User");
+const User = require("./models/User.model");
 
 require("./configs/passport.js");
 
 const app = express();
 
 mongoose
-  .connect(process.env.MONGO_CONNECT || "mongodb://localhost/thepop", {
+  .connect(process.env.MONGO_CONNECT || "mongodb://localhost/lads", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -32,7 +32,7 @@ mongoose
 const cors = require("cors");
 
 app.use(cors());
-const url = "mongodb://localhost/thepop" || process.env.MONGO_URI;
+const url = "mongodb://localhost/lads" || process.env.MONGO_URI;
 let store = new MongoStore({
   mongoUrl: url,
   collection: "sessions",
@@ -64,10 +64,10 @@ app.use(express.static(path.join(__dirname, "frontend/build")));
 // default value for title local
 app.locals.title = "Express - Generated with IronGenerator";
 
-const index = require("./routes/index");
+const index = require("./routes/index.routes");
 app.use("/api", index);
 
-const auth = require("./routes/auth");
+const auth = require("./routes/auth.routes");
 app.use("/api/auth", auth);
 
 module.exports = app;
