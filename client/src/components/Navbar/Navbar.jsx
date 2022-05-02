@@ -1,14 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = (props) => {
   //   console.log(props);
   const { isLoggedIn } = props;
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link to="/">Home</Link>
-      <Link to="/user">Profile</Link>
-      <Link to="/activities">See Activities</Link>
+      <Link to="/">
+        <button>Home</button>
+      </Link>
+      <Link to="/user">
+        <button>Profile</button>
+      </Link>
+      <Link to="/activities">
+        <button>Activities</button>
+      </Link>
 
       {isLoggedIn ? (
         <p> You are currently logged in</p>
