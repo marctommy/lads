@@ -9,6 +9,7 @@ import { logout } from "./services/auth";
 import { Link, useNavigate } from "react-router-dom";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Activities from "./components/Activities/Activities";
+import CreateActivity from "./components/Activities/CreateActivity";
 
 function App() {
   const navigate = useNavigate();
@@ -57,6 +58,11 @@ function App() {
           <Route
             path="/activities"
             element={<Activities loggedInUser={loggedInUser} />}
+          />
+
+          <Route
+            path="/activities/create"
+            element={<CreateActivity loggedInUser={loggedInUser} />}
           />
         </Routes>
       </div>

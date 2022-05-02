@@ -1,5 +1,25 @@
 .activity-btn {
-  font-size: 50px;
+  background-color: #1d3557; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 15px;
+  border: 2px solid #a8dadc;
+}
+
+.flex {
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 15px;
   align-items: center;
 }

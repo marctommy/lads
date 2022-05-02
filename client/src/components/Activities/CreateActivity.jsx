@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../Navbar/Navbar";
+import Header from "../Header/Header";
 
-export const CreateActivity = () => {
-  const navigate = useNavigate();
+const CreateActivity = (props) => {
+  const { loggedInUser } = props;
 
-  const [newActivity, setNewActivity] = useState({
-    name: "",
-    description: "",
-    duration: "",
-  });
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-  };
-  return <div>CreateActivity</div>;
+  return (
+    <>
+      <Navbar isLoggedIn={!!loggedInUser}></Navbar>
+      <Header />
+      <form className="card">
+        <label> New Activity</label>
+      </form>
+    </>
+  );
 };
+
+export default CreateActivity;
