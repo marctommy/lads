@@ -1,10 +1,11 @@
 import React from "react";
 
-export const FilterBtn = () => {
+const FilterBtn = () => {
   return (
     <div>
-      {" "}
       <button className="activity-btn">Filter</button>
     </div>
   );
 };
+
+export default FilterBtn;

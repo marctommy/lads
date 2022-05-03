@@ -1,18 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import Header from "../Header/Header";
 import "./Activity.css";
-import { FilterBtn } from "./FilterBtn";
+import FilterBtn from "./FilterBtn";
 
 const Activities = (props) => {
   const { loggedInUser } = props;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get("http://localhost:3005/api/activities/");
+      console.log(res);
+    };
+
+    fetchData();
+  });
+
   return (
     <div>
-      <Navbar isLoggedIn={!!loggedInUser}></Navbar>
-      <Header />
       <FilterBtn />
+      <Link to="/activities/create" className="activity-btn">
+        Create Activity
+      </Link>
       <section className="vh-100">
         <div className="row d-flex justify-content-center align-items-center h-60">
           <div className="col col-xl-10">

@@ -8,14 +8,17 @@ const Navbar = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link to="/">
-        <button>Home</button>
+        <button className="nav">Home</button>
       </Link>
       <Link to="/user">
-        <button>Profile</button>
+        <button className="nav">Profile</button>
       </Link>
       <Link to="/activities">
-        <button>Activities</button>
+        <button className="nav">Activities</button>
       </Link>
+      <button className="nav" type="button" onClick={props.logoutHandler}>
+        Logout
+      </button>
 
       {isLoggedIn ? (
         <p> You are currently logged in</p>

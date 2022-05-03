@@ -9,7 +9,9 @@ import { logout } from "./services/auth";
 import { Link, useNavigate } from "react-router-dom";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Activities from "./components/Activities/Activities";
-import CreateActivity from "./components/Activities/CreateActivity";
+import Form from "./components/Activities/Form";
+import Navbar from "./components/Navbar/Navbar";
+import Header from "./components/Header/Header";
 
 function App() {
   const navigate = useNavigate();
@@ -31,9 +33,11 @@ function App() {
 
   return (
     <div className="App">
-      <button type="button" onClick={logoutHandler}>
-        Logout
-      </button>
+      <Navbar
+        isLoggedIn={!!loggedInUser}
+        logoutHandler={logoutHandler}
+      ></Navbar>
+      <Header />
       <div>
         <Routes>
           <Route
@@ -60,10 +64,7 @@ function App() {
             element={<Activities loggedInUser={loggedInUser} />}
           />
 
-          <Route
-            path="/activities/create"
-            element={<CreateActivity loggedInUser={loggedInUser} />}
-          />
+          <Route path="/activities/create" element={<Form />} />
         </Routes>
       </div>
     </div>

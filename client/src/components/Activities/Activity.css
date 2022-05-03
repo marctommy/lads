@@ -1,6 +1,5 @@
 .activity-btn {
   background-color: #1d3557; /* Green */
-  border: none;
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -22,4 +21,20 @@
 .card {
   border-radius: 15px;
   align-items: center;
+}
+
+input {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+form button {
+  background-color: #1d3557; /* Green */
+  color: white;
+  padding: 10px 22px;
+  font-size: 15px;
+  margin: 1rem;
+  border-radius: 15px;
+  border: 2px solid #a8dadc;
 }
