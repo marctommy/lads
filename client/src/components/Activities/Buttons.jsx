@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Activity.css";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,8 @@ export const Buttons = () => {
         Search Activity{" "}
       </Link>
       <Link to="/activities/create" className="activity-btn">
-        Create Activity
+        {" "}
+        Create Activity{" "}
       </Link>
     </div>
   );

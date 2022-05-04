@@ -12,6 +12,7 @@ import Activities from "./components/Activities/Activities";
 import Form from "./components/Activities/Form";
 import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
+import { ActivityDetail } from "./components/Activities/ActivityDetail";
 
 function App() {
   const navigate = useNavigate();
@@ -65,6 +66,8 @@ function App() {
           />
 
           <Route path="/activities/create" element={<Form />} />
+
+          <Route path="/activities/:activityId" element={<ActivityDetail />} />
         </Routes>
       </div>
     </div>
