@@ -11,6 +11,6 @@ const activitySchema = new Schema({
     required: [true, "Description is required."],
   },
   duration: Number,
-  user: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  user: { type: Schema.Types.ObjectId, ref: "User" },
 });
 module.exports = model("Activity", activitySchema);

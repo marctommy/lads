@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Buttons = () => {
   return (
     <div className="flex">
-      <Link to="/activities" className="activity-btn">
+      <Link to="/activities" className="activity-btn ">
         Search Activity{" "}
       </Link>
       <Link to="/activities/create" className="activity-btn">

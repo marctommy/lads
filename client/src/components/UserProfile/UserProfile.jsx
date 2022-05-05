@@ -20,13 +20,15 @@ export default function UserProfile(props) {
       </center>
       <center>
         <span>
-          <strong>Activities: </strong>
+          <strong>Here for: </strong>
         </span>
-        <span className="badge bg-primary">Outdoor</span>
-        <span className="badge bg-secondary">Mechanics</span>
-        <span className="badge bg-success">Mindfulness</span>
-        <span className="badge bg-danger">Adventure</span>
-        <span className="badge bg-dark">Coding</span>
+        <span className="badge rounded-pill bg-primary">Outdoor</span>
+        <span className="badge rounded-pill bg-secondary">DIY</span>
+        <span className="badge rounded-pill bg-success">Mindfulness</span>
+        <span className="badge rounded-pill bg-danger">Sports</span>
+        <span className="badge rounded-pill bg-dark">Games</span>
+        <span class="badge rounded-pill bg-warning text-dark">& Children</span>
+        <span class="badge rounded-pill bg-light text-dark">Others</span>
       </center>
       <hr />
       <p class="text-left">

@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Activity.css";
 import FilterBtn from "./FilterBtn";
 import { ItemActivity } from "./ItemActivity";
+import { LoadingComponent } from "../Header/LoadingComponent";
 
 const Activities = () => {
   const [listOfActivities, setListOfActivities] = useState([
@@ -25,17 +26,17 @@ const Activities = () => {
     fetchData();
   }, []);
 
-  const activities = listOfActivities.map((item) => {
-    return <ItemActivity listFromParent={item} />;
-  });
-
-  return (
+  return !listOfActivities ? (
+    <LoadingComponent />
+  ) : (
     <div>
       <FilterBtn />
       <Link to="/activities/create" className="activity-btn">
         Create Activity
       </Link>
-      {activities}
+      {listOfActivities?.map((activity, index) => (
+        <ItemActivity activity={activity} key={activity.name} />
+      ))}
     </div>
   );
 };

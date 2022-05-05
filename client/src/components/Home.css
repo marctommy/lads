@@ -6,3 +6,20 @@ body {
     rgba(241, 250, 238, 1) 100%
   );
 }
+
+.login {
+  background-image: url(./login.gif);
+  padding: 40px;
+  width: 60vw;
+  height: 50vh;
+  border: 2px solid black;
+}
+.login button {
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 15px;
+}
+
+.login input {
+  margin: 10px;
+}

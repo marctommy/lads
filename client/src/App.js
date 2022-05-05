@@ -6,13 +6,13 @@ import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import axios from "axios";
 import { logout } from "./services/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Activities from "./components/Activities/Activities";
 import Form from "./components/Activities/Form";
 import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
-import { ActivityDetail } from "./components/Activities/ActivityDetail";
+import { Details } from "./components/Activities/Details";
 
 function App() {
   const navigate = useNavigate();
@@ -67,7 +67,8 @@ function App() {
 
           <Route path="/activities/create" element={<Form />} />
 
-          <Route path="/activities/:activityId" element={<ActivityDetail />} />
+          <Route path="/activities/:id" element={<Details />} />
+          <Route path="/activities/:id/edit" element={<Form />} />
         </Routes>
       </div>
     </div>
