@@ -13,6 +13,7 @@ import Form from "./components/Activities/Form";
 import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
 import { Details } from "./components/Activities/Details";
+import ChatContainer from "./components/Chat/ChatContainer";
 
 function App() {
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ function App() {
         isLoggedIn={!!loggedInUser}
         logoutHandler={logoutHandler}
       ></Navbar>
+      {/* {!!loggedInUser && <ChatContainer loggedInUser={loggedInUser} />} */}
       <Header />
       <div>
         <Routes>
@@ -67,7 +69,10 @@ function App() {
 
           <Route path="/activities/create" element={<Form />} />
 
-          <Route path="/activities/:id" element={<Details />} />
+          <Route
+            path="/activities/:id"
+            element={<Details loggedInUser={loggedInUser} />}
+          />
           <Route path="/activities/:id/edit" element={<Form />} />
         </Routes>
       </div>

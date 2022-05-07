@@ -15,5 +15,6 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  eventsAttended: [{ type: Schema.Types.ObjectId, ref: "Activity" }],
 });
 module.exports = model("User", userSchema);

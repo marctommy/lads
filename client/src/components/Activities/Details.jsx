@@ -5,8 +5,10 @@ import { EditActivity } from "./EditActivity";
 import DeleteActivity from "./DeleteActivity";
 import { LoadingComponent } from "../Header/LoadingComponent";
 // import { Map } from "../Features/Map";
+import ChatContainer from "../Chat/ChatContainer";
+import map from "./maps.png";
 
-export const Details = () => {
+export const Details = ({ loggedInUser }) => {
   const [activity, setActivity] = useState();
   const [showEditForm, setShowEditForm] = useState(false);
 
@@ -50,20 +52,30 @@ export const Details = () => {
         <span className="badge rounded-pill bg-light text-dark">Others</span>
       </center>
       <hr />
-      <p className="text-left">
-        <strong>Description: </strong>
-        {activity.description}
-        {/* <Map locationInfo={activity} /> */}
-      </p>
-      <DeleteActivity activity={activity} />
+      <div className="details-container">
+        <div className="container-left">
+          <p className="text-left">
+            <strong>Description: </strong>
+            {activity.description}
+            {/* <Map locationInfo={activity} /> */}
+          </p>
+          <img className="detail-map" alt="map" src={map} />
+          <DeleteActivity activity={activity} />
 
-      <button
-        onClick={() => setShowEditForm(!showEditForm)}
-        className="btn btn-outline-dark btn-sm btn-floating"
-      >
-        Edit
-      </button>
-      {showEditForm ? <EditActivity activity={activity} /> : null}
+          <button
+            onClick={() => setShowEditForm(!showEditForm)}
+            className="btn btn-outline-dark btn-sm btn-floating"
+          >
+            Edit
+          </button>
+          {showEditForm ? <EditActivity activity={activity} /> : null}
+        </div>
+        <div className="container-right"></div>
+        <ChatContainer
+          loggedInUser={loggedInUser}
+          conversation={activity.conversation}
+        />
+      </div>
     </div>
   );
 };

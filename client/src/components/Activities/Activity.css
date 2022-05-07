@@ -23,6 +23,11 @@
   align-items: center;
 }
 
+.detail-map {
+  height: 50vh;
+  width: 50vw;
+}
+
 input {
   display: flex;
   align-items: center;

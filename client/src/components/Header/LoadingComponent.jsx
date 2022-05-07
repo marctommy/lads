@@ -3,7 +3,7 @@ import loading from "./waiting.webp";
 export const LoadingComponent = () => {
   return (
     <div>
-      <img className="profile-photo" src={loading} />
+      <img className="profile-photo" alt="loading" src={loading} />
     </div>
   );
 };
