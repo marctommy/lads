@@ -1,4 +1,5 @@
 nav {
+  display: flex;
   align-items: center;
   text-decoration: none;
 }
@@ -14,4 +15,8 @@ nav {
 
   border-radius: 5px;
   border: 2px solid #1d3557;
+}
+
+.navbar-heading {
+  color: #1d3557;
 }

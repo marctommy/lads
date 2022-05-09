@@ -4,9 +4,9 @@ const router = express.Router();
 const Activity = require("../models/Activity.model");
 
 router.post("/create", (req, res) => {
-  const { name, description, duration } = req.body;
+  const { name, description, duration, category } = req.body;
   console.log(req.body);
-  Activity.create({ name, description, duration })
+  Activity.create({ name, description, duration, category })
     .then((newActivity) => {
       console.log(newActivity);
       res.json(newActivity);
@@ -38,7 +38,7 @@ router.get("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
   const { id } = req.params;
   const { name, description, duration, category } = req.body;
-  Activity.findByIdAndUpdate(id, { name, description, duration })
+  Activity.findByIdAndUpdate(id, { name, description, duration, category })
     .then(() => {
       res.json({ message: `Activity ${id} was successfully updated` });
     })

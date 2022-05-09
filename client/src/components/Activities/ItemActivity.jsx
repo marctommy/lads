@@ -10,6 +10,7 @@ export const ItemActivity = ({ activity }) => {
     name,
     description,
     duration,
+    category,
     location = "Berlin",
     date,
   } = activity;
@@ -31,6 +32,7 @@ export const ItemActivity = ({ activity }) => {
                     <span className="text-muted small">
                       Description:{description}:
                     </span>
+                    <span>{category}</span>
                     <br />
                     <span className="text-muted small">
                       Location:{location}

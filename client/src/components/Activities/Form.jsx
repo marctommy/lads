@@ -9,6 +9,7 @@ const Form = () => {
     title: "",
     description: "",
     duration: 0,
+    category: "",
   });
 
   const handleSubmit = async (event) => {
@@ -27,13 +28,13 @@ const Form = () => {
   };
 
   const categories = [
-    { text: "Outdoor", categoryId: "outdoor" },
-    { text: "DIY", categoryId: "diy" },
-    { text: "Mindfulness", categoryId: "mindfulness" },
-    { text: "Sports", categoryId: "sports" },
-    { text: "Games", categoryId: "games" },
-    { text: "Children", categoryId: "children" },
-    { text: "Others", categoryId: "others" },
+    { text: "Outdoor", categoryId: "Outdoor" },
+    { text: "DIY", categoryId: "DIY" },
+    { text: "Mindfulness", categoryId: "Mindfulness" },
+    { text: "Sports", categoryId: "Sports" },
+    { text: "Games", categoryId: "Games" },
+    { text: "Children", categoryId: "& Children" },
+    { text: "Others", categoryId: "Others" },
   ];
 
   return (

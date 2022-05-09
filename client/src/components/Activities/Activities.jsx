@@ -12,6 +12,7 @@ const Activities = () => {
       name: "",
       description: "",
       duration: "",
+      category: "",
     },
   ]);
 

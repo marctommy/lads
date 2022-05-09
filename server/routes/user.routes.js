@@ -1,9 +1,15 @@
 const express = require("express");
 const router = express.Router();
-
+const User = require("../models/User.model");
 /* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
+
+router.get("/user", function (req, res, next) {
+  User.findById(id)
+    .then((loggedInUser) => {
+      console.log("loggedInUser", loggedInUser);
+      res.json("req.user", id);
+    })
+    .catch((error) => res.json(error));
 });
 
 module.exports = router;

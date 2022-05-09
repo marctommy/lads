@@ -1,5 +1,5 @@
 import React from "react";
-import loading from "./waiting.webp";
+import loading from "./loading.gif";
 export const LoadingComponent = () => {
   return (
     <div>

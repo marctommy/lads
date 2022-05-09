@@ -36,6 +36,7 @@ function App() {
   return (
     <div className="App">
       <Navbar
+        currentUser={loggedInUser}
         isLoggedIn={!!loggedInUser}
         logoutHandler={logoutHandler}
       ></Navbar>

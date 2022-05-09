@@ -13,5 +13,6 @@ const activitySchema = new Schema({
   duration: Number,
   user: { type: Schema.Types.ObjectId, ref: "User" }, // change to creator
   conversation: [{ type: Schema.Types.ObjectId, ref: "Message" }],
+  category: String,
 });
 module.exports = model("Activity", activitySchema);
