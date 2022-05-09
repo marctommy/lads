@@ -6,9 +6,14 @@ import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import axios from "axios";
 import { logout } from "./services/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Activities from "./components/Activities/Activities";
+import Form from "./components/Activities/Form";
+import Navbar from "./components/Navbar/Navbar";
+import Header from "./components/Header/Header";
+import { Details } from "./components/Activities/Details";
+import ChatContainer from "./components/Chat/ChatContainer";
 
 function App() {
   const navigate = useNavigate();
@@ -30,9 +35,13 @@ function App() {
 
   return (
     <div className="App">
-      <button type="button" onClick={logoutHandler}>
-        Logout
-      </button>
+      <Navbar
+        currentUser={loggedInUser}
+        isLoggedIn={!!loggedInUser}
+        logoutHandler={logoutHandler}
+      ></Navbar>
+      {/* {!!loggedInUser && <ChatContainer loggedInUser={loggedInUser} />} */}
+      <Header />
       <div>
         <Routes>
           <Route
@@ -58,6 +67,14 @@ function App() {
             path="/activities"
             element={<Activities loggedInUser={loggedInUser} />}
           />
+
+          <Route path="/activities/create" element={<Form />} />
+
+          <Route
+            path="/activities/:id"
+            element={<Details loggedInUser={loggedInUser} />}
+          />
+          <Route path="/activities/:id/edit" element={<Form />} />
         </Routes>
       </div>
     </div>

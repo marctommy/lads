@@ -1,17 +1,43 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import Navbar from "../Navbar/Navbar";
-import Header from "../Header/Header";
+import "./Activity.css";
+import FilterBtn from "./FilterBtn";
+import { ItemActivity } from "./ItemActivity";
+import { LoadingComponent } from "../Header/LoadingComponent";
 
-const Activities = (props) => {
-  const { loggedInUser } = props;
-  return (
+const Activities = () => {
+  const [listOfActivities, setListOfActivities] = useState([
+    {
+      name: "",
+      description: "",
+      duration: "",
+      category: "",
+    },
+  ]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get("http://localhost:3005/api/activities/");
+      // console.log(res);
+
+      setListOfActivities(res.data);
+    };
+    // console.log(listOfActivities);
+    fetchData();
+  }, []);
+
+  return !listOfActivities ? (
+    <LoadingComponent />
+  ) : (
     <div>
-      <Navbar isLoggedIn={!!loggedInUser}></Navbar>
-      <Header />
-      <h1>This is the List of all your Activities</h1>
-      <button> Link</button>
+      <FilterBtn />
+      <Link to="/activities/create" className="activity-btn">
+        Create Activity
+      </Link>
+      {listOfActivities?.map((activity, index) => (
+        <ItemActivity activity={activity} key={activity.name} />
+      ))}
     </div>
   );
 };

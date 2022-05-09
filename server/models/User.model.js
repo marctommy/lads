@@ -5,15 +5,19 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  lastName: String,
   email: {
     type: String,
     required: [true, "Email is required."],
     unique: true,
   },
+  hobbies: {
+    type: String,
+    required: false,
+  },
   password: {
     type: String,
     required: true,
   },
+  eventsAttended: [{ type: Schema.Types.ObjectId, ref: "Activity" }],
 });
 module.exports = model("User", userSchema);

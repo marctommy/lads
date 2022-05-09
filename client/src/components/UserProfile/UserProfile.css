@@ -1,6 +1,10 @@
-h1 {
-  color: blue;
+.profile-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 90px;
 }
 
 .container {
+  margin: 5px;
+  border-radius: 15px;
 }

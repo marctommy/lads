@@ -1,6 +1,6 @@
 import React from "react";
 import { login } from "../services/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -20,22 +20,24 @@ const Login = (props) => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Email"
-        onChange={handleEmail}
-        value={email}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={handlePasswordChange}
-        value={password}
-      />
-      <button type="button" onClick={handleSubmit}>
-        Login
-      </button>
+    <div className="card login">
+      <center>
+        <input
+          type="text"
+          placeholder="Email"
+          onChange={handleEmail}
+          value={email}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={handlePasswordChange}
+          value={password}
+        />
+        <button type="button" onClick={handleSubmit}>
+          Login
+        </button>
+      </center>
     </div>
   );
 };
