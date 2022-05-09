@@ -10,10 +10,11 @@ const userSchema = new Schema({
     required: [true, "Email is required."],
     unique: true,
   },
-  hobbies: {
-    type: String,
-    required: false,
-  },
+  hobbies: [
+    {
+      type: String,
+    },
+  ],
   password: {
     type: String,
     required: true,

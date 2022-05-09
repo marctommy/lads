@@ -33,6 +33,7 @@ router.post("/signup", (req, res, next) => {
         hobbies: hobbies,
       })
         .then((dbUser) => {
+          console.log("db", dbUser);
           // login with passport:
           req.login(dbUser, (err) => {
             if (err) {

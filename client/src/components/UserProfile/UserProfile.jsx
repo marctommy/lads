@@ -2,13 +2,6 @@ import React from "react";
 import "./UserProfile.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import profile from "./avatars/profile.gif";
-// import glassdark from "./avatars/glassdark.gif";
-// import laughing from "./avatars/laughing.gif";
-// import moustache from "./avatars/moustache.gif";
-// import muscle from "./avatars/muscle.gif";
-// import oldnerd from "./avatars/oldnerd.gif";
-// import redhair from "./avatars/redhair.gif";
-// import suit from "./avatars/suit.gif";
 
 export default function UserProfile(props) {
   console.log(props);
@@ -29,6 +22,14 @@ export default function UserProfile(props) {
         <span>
           <strong>Here for: </strong>
         </span>
+        {/* <p>
+          {props.loggedInUser.hobbies.map((hobby) => (
+            <span>
+              {" "}
+              {hobby} {hobby.name}{" "}
+            </span>
+          ))}
+        </p> */}
         <span className="badge rounded-pill bg-primary">Outdoor</span>
         <span className="badge rounded-pill bg-secondary">DIY</span>
         <span className="badge rounded-pill bg-success">Mindfulness</span>

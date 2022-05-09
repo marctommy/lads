@@ -1,5 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const Map = ({ locationInfo }) => {
-  return <div>Map</div>;
+  return <div></div>;
 };
