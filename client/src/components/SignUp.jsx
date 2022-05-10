@@ -9,16 +9,11 @@ const SignUp = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [hobbies, setHobbies] = useState([
-    "Outdoor",
-    "Mindfulness",
-    "Gaming",
-    "Sports",
-    "Workout",
-    "DIY",
-    "& Children",
-    "Other",
-  ]);
+  const [hobbies, setHobbies] = useState([]);
+
+  const AddEntryClick = () => {
+    setHobbies([...hobbies, `Hobbies: ${hobbies.length}`]);
+  };
   const [avatarId, setAvatarId] = useState();
   const avatars = [
     { text: "Glasses Blond", avatarId: "glassesdark" },
@@ -70,11 +65,22 @@ const SignUp = (props) => {
       <label>
         <Multiselect
           name="hobbies"
+          value={setHobbies}
           isObject={false}
-          options={hobbies}
+          options={[
+            "Outdoor",
+            "Mindfulness",
+            "Gaming",
+            "Sports",
+            "Workout",
+            "DIY",
+            "& Children",
+            "Other",
+          ]}
           onRemove={{}}
           onClick={(event) => {
-            setHobbies(event.target.value);
+            console.log("event", event);
+            AddEntryClick(event.target.value);
           }}
         />
       </label>
