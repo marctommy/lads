@@ -11,7 +11,7 @@ const userSchema = new Schema({
     unique: true,
   },
   hobbies: {
-    type: String,
+    type: [String],
     required: false,
   },
   password: {

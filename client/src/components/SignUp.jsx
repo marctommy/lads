@@ -3,22 +3,25 @@ import { signup } from "../services/auth";
 import { useNavigate } from "react-router-dom";
 import Multiselect from "multiselect-react-dropdown";
 
+const hobbiesList = [
+  { name: "Outdoor", id: 1 },
+  { name: "Mindfulness", id: 2 },
+  { name: "Gaming", id: 3 },
+  { name: "Sports", id: 4 },
+  { name: "Sports", id: 5 },
+  { name: "Workout", id: 6 },
+  { name: "DIY", id: 7 },
+  { name: "& Children", id: 8 },
+  { name: "Other", id: 9}
+]
+
 const SignUp = (props) => {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [hobbies, setHobbies] = useState([
-    "Outdoor",
-    "Mindfulness",
-    "Gaming",
-    "Sports",
-    "Workout",
-    "DIY",
-    "& Children",
-    "Other",
-  ]);
+  const [hobbies, setHobbies] = useState([]);
   // const [img, setImg] = React.useState("");
 
   const submitUserRegisteration = () => {
@@ -27,6 +30,21 @@ const SignUp = (props) => {
       navigate("/");
     });
   };
+
+  console.log(hobbies)
+
+  const handleSelect = (newHobbiesList) => {
+    const hobbyStrings = newHobbiesList.map(el => el.name)
+
+    setHobbies(hobbyStrings)
+  }
+
+  const handleRemove = (newHobbiesList) => {
+    const hobbyStrings = newHobbiesList.map(el => el.name)
+
+    setHobbies(hobbyStrings)
+  }
+
   return (
     <div className="App card">
       <input
@@ -50,9 +68,10 @@ const SignUp = (props) => {
 
       <Multiselect
         name="hobbies"
-        onRemove={{}}
-        onSelect={setHobbies}
-        options={hobbies}
+        displayValue="name"
+        onRemove={handleRemove}
+        onSelect={handleSelect}
+        options={hobbiesList}
       />
 
       <button onClick={submitUserRegisteration}>Register</button>

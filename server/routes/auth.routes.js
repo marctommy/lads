@@ -7,11 +7,11 @@ const passport = require("passport");
 router.post("/signup", (req, res, next) => {
   const { name, email, password, hobbies } = req.body;
 
-  if (password.length < 8) {
-    return res
-      .status(400)
-      .json({ message: "Your password must be 8 chars minimum" });
-  }
+  // if (password.length < 8) {
+  //   return res
+  //     .status(400)
+  //     .json({ message: "Your password must be 8 chars minimum" });
+  // }
   if (name === "") {
     return res.status(400).json({ message: "Your name cannot be empty" });
   }
@@ -25,6 +25,10 @@ router.post("/signup", (req, res, next) => {
       // hash the password, create the user and redirect to profile page
       const salt = bcrypt.genSaltSync();
       const hash = bcrypt.hashSync(password, salt);
+
+      console.log(name)
+      console.log(hobbies)
+      
 
       User.create({
         name: name,
