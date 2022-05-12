@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 
 router.post("/signup", (req, res, next) => {
-  const { name, email, password, hobbies } = req.body;
+  const { name, email, password, hobbies, avatarId } = req.body;
 
   // if (password.length < 8) {
   //   return res
@@ -26,15 +26,15 @@ router.post("/signup", (req, res, next) => {
       const salt = bcrypt.genSaltSync();
       const hash = bcrypt.hashSync(password, salt);
 
-      console.log(name)
-      console.log(hobbies)
-      
+      console.log(name);
+      console.log(hobbies);
 
       User.create({
         name: name,
         email: email,
         password: hash,
         hobbies: hobbies,
+        avatarId: avatarId,
       })
         .then((dbUser) => {
           // login with passport:
