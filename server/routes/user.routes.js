@@ -10,6 +10,7 @@ router.put("/:id", async (req, res) => {
 
   const loggedInUser = await User.findById(id);
   const { eventsAttended } = loggedInUser;
+  // Id already in array?
   const updatedEvents = [...eventsAttended, newEventId];
 
   User.findByIdAndUpdate(id, {
