@@ -14,6 +14,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
 import { Details } from "./components/Activities/Details";
 import ChatContainer from "./components/Chat/ChatContainer";
+import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
   const navigate = useNavigate();
@@ -68,7 +69,10 @@ function App() {
             element={<Activities loggedInUser={loggedInUser} />}
           />
 
-          <Route path="/activities/create" element={<Form />} />
+          <Route
+            path="/activities/create"
+            element={<Form loggedInUser={loggedInUser} />}
+          />
 
           <Route
             path="/activities/:id"

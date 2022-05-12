@@ -12,8 +12,19 @@ const hobbiesList = [
   { name: "Workout", id: 6 },
   { name: "DIY", id: 7 },
   { name: "& Children", id: 8 },
-  { name: "Other", id: 9}
-]
+  { name: "Other", id: 9 },
+];
+
+const avatarList = [
+  { text: "Glasses Blond", avatarId: "glassesdark" },
+  { text: "Glasses Dark", avatarId: "glassesblonde" },
+  { text: "Laughing", avatarId: "laughing" },
+  { text: "Moustache", avatarId: "moustache" },
+  { text: "Old Nerd", avatarId: "oldnerd" },
+  { text: "Redhair", avatarId: "redhair" },
+  { text: "Suit", avatarId: "suit" },
+  { text: "Talking", avatarId: "talking" },
+];
 
 const SignUp = (props) => {
   const navigate = useNavigate();
@@ -22,57 +33,81 @@ const SignUp = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hobbies, setHobbies] = useState([]);
-  // const [img, setImg] = React.useState("");
+  const [avatarId, setAvatarId] = useState("");
 
   const submitUserRegisteration = () => {
-    signup(name, email, password, hobbies).then((user) => {
+    signup(name, email, password, hobbies, avatarId).then((user) => {
+      console.log(user);
       props.setLoggedInUser(user);
       navigate("/");
     });
   };
 
-  console.log(hobbies)
+  const handleChange = (newHobbiesList) => {
+    const hobbyStrings = newHobbiesList.map((el) => el.name);
 
-  const handleSelect = (newHobbiesList) => {
-    const hobbyStrings = newHobbiesList.map(el => el.name)
+    setHobbies(hobbyStrings);
+  };
 
-    setHobbies(hobbyStrings)
-  }
+  console.log(avatarId);
 
-  const handleRemove = (newHobbiesList) => {
-    const hobbyStrings = newHobbiesList.map(el => el.name)
-
-    setHobbies(hobbyStrings)
-  }
+  // const handleChange = (newAvatar) => {
+  //   const
+  // }
 
   return (
     <div className="App card">
-      <input
-        type="text"
-        placeholder="John"
-        name="name"
-        onChange={(event) => setName(event.target.value)}
-      />
-      <input
-        type="email"
-        placeholder="john@doe.com"
-        name="email"
-        onChange={(event) => setEmail(event.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="*********"
-        name="password"
-        onChange={(event) => setPassword(event.target.value)}
-      />
-
-      <Multiselect
-        name="hobbies"
-        displayValue="name"
-        onRemove={handleRemove}
-        onSelect={handleSelect}
-        options={hobbiesList}
-      />
+      <label>
+        Name
+        <input
+          type="text"
+          placeholder="Your Name"
+          name="name"
+          onChange={(event) => setName(event.target.value)}
+        />
+      </label>
+      <label>
+        Email
+        <input
+          type="email"
+          placeholder="Your Email"
+          name="email"
+          onChange={(event) => setEmail(event.target.value)}
+        />
+      </label>
+      <label>
+        Password
+        <input
+          type="password"
+          placeholder="min. 8 characters"
+          name="password"
+          onChange={(event) => setPassword(event.target.value)}
+        />
+      </label>
+      <label>
+        Hobbies
+        <Multiselect
+          name="hobbies"
+          displayValue="name"
+          onRemove={handleChange}
+          onSelect={handleChange}
+          options={hobbiesList}
+        />
+      </label>
+      <label>
+        Choose an Avatar
+        <sections>
+          {avatarList.map((avatar) => (
+            <img
+              className="profile-photo"
+              src={require(`./UserProfile/avatars/${avatar.avatarId}.gif`)}
+              onClick={() => setAvatarId(avatar.avatarId)}
+              key={avatar.avatarId}
+              alt={avatar.text}
+            />
+          ))}
+        </sections>
+      </label>
 
       <button onClick={submitUserRegisteration}>Register</button>
     </div>

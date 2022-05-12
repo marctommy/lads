@@ -10,7 +10,7 @@ body {
 .login {
   background-image: url(./login.gif);
   padding: 40px;
-  width: 60vw;
+  width: 50vw;
   height: 50vh;
   border: 2px solid black;
 }
@@ -22,4 +22,9 @@ body {
 
 .login input {
   margin: 10px;
+}
+
+.story {
+  width: 80vw;
+  height: 50vh;
 }

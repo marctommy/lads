@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Form = () => {
+const Form = ({ loggedInUser }) => {
+  const { _id } = loggedInUser;
   const navigate = useNavigate();
   const [categoryId, setCategoryId] = useState();
   const [newActivity, setNewActivity] = useState({
@@ -18,9 +19,8 @@ const Form = () => {
     try {
       const response = await axios.post(
         "http://localhost:3005/api/activities/create",
-        { ...newActivity, category: categoryId }
+        { ...newActivity, category: categoryId, user: _id }
       );
-      console.log(response);
       navigate("/activities");
     } catch (error) {
       console.log(error);
@@ -103,7 +103,12 @@ const Form = () => {
         </section>
       </center>
 
-      <button type="submit">Create</button>
+      <button
+        type="submit"
+        className="btn btn-outline-dark btn-sm btn-floating"
+      >
+        Create
+      </button>
     </form>
   );
 };

@@ -5,8 +5,8 @@ import "./Activity.css";
 import FilterBtn from "./FilterBtn";
 import { ItemActivity } from "./ItemActivity";
 import { LoadingComponent } from "../Header/LoadingComponent";
-
-const Activities = () => {
+import Weather from "../Features/Weather";
+const Activities = ({ loggedInUser }) => {
   const [listOfActivities, setListOfActivities] = useState([
     {
       name: "",
@@ -31,7 +31,8 @@ const Activities = () => {
     <LoadingComponent />
   ) : (
     <div>
-      <FilterBtn />
+      <Weather loggedInUser={loggedInUser} />
+      {/* <FilterBtn /> */}
       <Link to="/activities/create" className="activity-btn">
         Create Activity
       </Link>

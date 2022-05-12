@@ -10,12 +10,31 @@ const Navbar = (props, { loggedInUser }) => {
       <Link to="/">
         <button className="nav">Home</button>
       </Link>
-      <Link to="/user">
-        <button className="nav">Profile</button>
-      </Link>
-      <Link to="/activities">
-        <button className="nav">Activities</button>
-      </Link>
+      {isLoggedIn ? (
+        <Link to="/user">
+          <button className="nav">Profile</button>
+        </Link>
+      ) : (
+        ""
+      )}
+      {isLoggedIn ? (
+        <Link to="/activities">
+          <button className="nav">Activities</button>
+        </Link>
+      ) : (
+        ""
+      )}
+
+      {isLoggedIn ? (
+        <h3 className="navbar-heading">
+          Welcome back, {props.currentUser.name}
+        </h3>
+      ) : (
+        <Link to="/login">
+          <button className="nav">Login</button>
+        </Link>
+      )}
+
       {isLoggedIn ? (
         <button className="nav" type="button" onClick={props.logoutHandler}>
           Logout
@@ -23,17 +42,6 @@ const Navbar = (props, { loggedInUser }) => {
       ) : (
         <Link to="/signup">
           <button className="nav">Sign Up</button>{" "}
-        </Link>
-      )}
-
-      {isLoggedIn ? (
-        <h3 className="navbar-heading">
-          {" "}
-          Welcome back, {props.currentUser.name}
-        </h3>
-      ) : (
-        <Link to="/login">
-          <button className="nav">Login</button>
         </Link>
       )}
     </nav>
