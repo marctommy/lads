@@ -2,18 +2,24 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model");
 
-router.post("/:id", (req, res) => {
+router.put("/:id", async (req, res) => {
   const { id } = req.params;
+  console.log("put route hit");
 
-  const { name, hobbies, avatarId, eventsAttended } = req.body;
+  const { name, hobbies, avatarId, newEventId } = req.body;
+
+  const loggedInUser = await User.findById(id);
+  const { eventsAttended } = loggedInUser;
+  const updatedEvents = [...eventsAttended, newEventId];
 
   User.findByIdAndUpdate(id, {
     name,
     hobbies,
     avatarId,
-    eventsAttended,
+    eventsAttended: updatedEvents,
   })
     .then((updatedUser) => {
+      res.json(updatedUser);
       console.log(updatedUser);
     })
     .catch((error) => {

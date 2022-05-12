@@ -6,15 +6,9 @@ import FilterBtn from "./FilterBtn";
 import { ItemActivity } from "./ItemActivity";
 import { LoadingComponent } from "../Header/LoadingComponent";
 import Weather from "../Features/Weather";
+
 const Activities = ({ loggedInUser }) => {
-  const [listOfActivities, setListOfActivities] = useState([
-    {
-      name: "",
-      description: "",
-      duration: "",
-      category: "",
-    },
-  ]);
+  const [listOfActivities, setListOfActivities] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +21,7 @@ const Activities = ({ loggedInUser }) => {
     fetchData();
   }, []);
 
-  return !listOfActivities ? (
+  return !listOfActivities.length > 0 ? (
     <LoadingComponent />
   ) : (
     <div>

@@ -18,13 +18,14 @@ export const ItemActivity = ({ activity }) => {
   } = activity;
 
   const handleAttend = async (event) => {
-    console.log("added", event);
-
     event.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:3005/api/${user}`, {
-        eventsAttended: _id,
-      });
+      const response = await axios.put(
+        `http://localhost:3005/api/user/${user._id}`,
+        {
+          newEventId: _id,
+        }
+      );
       console.log("attend", response);
     } catch (error) {
       console.log(error);
@@ -47,9 +48,9 @@ export const ItemActivity = ({ activity }) => {
                 </span>
                 <div className="small mb-0">
                   <i className="far fa-star fa-lg"></i>
-                  {/* created by {user.name} */}
+                  created by {user.name}
                   <div className="mx-2">|</div> In Berlin
-                  <strong> {duration}</strong> on Date {date || "Now"}
+                  <strong> {duration} hours</strong> on Date {date || "Now"}
                   <div className="d-flex justify-content-start align-items-center">
                     <div className="mb-0 text-udivercase">
                       <span className="text-muted small">
