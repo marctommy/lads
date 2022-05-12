@@ -84,7 +84,7 @@ const Form = () => {
       <center>
         <span>
           <strong> </strong>
-        </span>{" "}
+        </span>
         Category:
         <section>
           {categories.map((category) => (

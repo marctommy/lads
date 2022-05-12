@@ -20,23 +20,27 @@ const Login = (props) => {
   };
 
   return (
-    <div className="card login">
+    <div>
       <center>
-        <input
-          type="text"
-          placeholder="Email"
-          onChange={handleEmail}
-          value={email}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={handlePasswordChange}
-          value={password}
-        />
-        <button type="button" onClick={handleSubmit}>
-          Login
-        </button>
+        <div className="card login">
+          <center>
+            <input
+              type="text"
+              placeholder="Email"
+              onChange={handleEmail}
+              value={email}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={handlePasswordChange}
+              value={password}
+            />
+            <button type="button" onClick={handleSubmit}>
+              Login
+            </button>
+          </center>
+        </div>
       </center>
     </div>
   );

@@ -3,11 +3,12 @@ const router = express.Router();
 const User = require("../models/User.model");
 /* GET users listing. */
 
-router.get("/user", function (req, res, next) {
-  User.findById(id)
-    .then((loggedInUser) => {
-      console.log("loggedInUser", loggedInUser);
-      res.json("req.user", id);
+router.post("/user", function (req, res, next) {
+  const { name, email, hobbies } = req.body;
+  User.create({ name, email, hobbies })
+    .then((dbUser) => {
+      console.log("dbUser", dbUser);
+      res.json(dbUser);
     })
     .catch((error) => res.json(error));
 });

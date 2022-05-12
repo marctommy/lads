@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { signup } from "../services/auth";
 import { useNavigate } from "react-router-dom";
 import Multiselect from "multiselect-react-dropdown";
+import axios from "axios";
 
 const SignUp = (props) => {
   const navigate = useNavigate();
@@ -11,7 +12,19 @@ const SignUp = (props) => {
   const [password, setPassword] = useState("");
   const [hobbies, setHobbies] = useState([]);
 
-  const AddEntryClick = () => {
+  const AddEntryClick = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await axios.post("http:localhost:3005/api/user", {
+        ...hobbies,
+        hobbies: hobbies,
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+
     setHobbies([...hobbies, `Hobbies: ${hobbies.length}`]);
   };
   const [avatarId, setAvatarId] = useState();
@@ -65,7 +78,7 @@ const SignUp = (props) => {
       <label>
         <Multiselect
           name="hobbies"
-          value={setHobbies}
+          value={hobbies}
           isObject={false}
           options={[
             "Outdoor",
@@ -77,7 +90,9 @@ const SignUp = (props) => {
             "& Children",
             "Other",
           ]}
-          onRemove={{}}
+          onRemove={(event) => {
+            setHobbies({ ...hobbies, hobbies: event.target.value });
+          }}
           onClick={(event) => {
             console.log("event", event);
             AddEntryClick(event.target.value);
@@ -86,17 +101,20 @@ const SignUp = (props) => {
       </label>
       <label>
         Choose an Avatar
-        <sections>
-          {avatars.map((avatar) => (
-            <img
-              className="profile-photo"
-              src={require(`./UserProfile/avatars/${avatar.avatarId}.gif`)}
-              onClick={() => setAvatarId(avatar.avatarId)}
-              key={avatar.avatarId}
-              alt={avatar.text}
-            />
-          ))}
-        </sections>
+        <br />{" "}
+        <center>
+          <sections>
+            {avatars.map((avatar) => (
+              <img
+                className="profile-photo"
+                src={require(`./UserProfile/avatars/${avatar.avatarId}.gif`)}
+                onClick={() => setAvatarId(avatar.avatarId)}
+                key={avatar.avatarId}
+                alt={avatar.text}
+              />
+            ))}
+          </sections>
+        </center>
       </label>
       <button onClick={submitUserRegisteration}>Register</button>
     </div>

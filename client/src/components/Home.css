@@ -23,3 +23,8 @@ body {
 .login input {
   margin: 10px;
 }
+
+.story {
+  width: 50vw;
+  height: 50vh;
+}
