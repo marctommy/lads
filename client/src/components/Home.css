@@ -28,3 +28,13 @@ body {
   width: 80vw;
   height: 50vh;
 }
+
+.profile-photo-selection {
+  width: 160px;
+  height: 160px;
+  border-radius: 90px;
+}
+.profile-photo-selection:hover {
+  border: 3px solid #e63946;
+  transform: scale(120%);
+}

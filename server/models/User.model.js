@@ -19,6 +19,7 @@ const userSchema = new Schema({
     select: false,
     required: true,
   },
+  location: String,
   avatarId: String,
   eventsAttended: [{ type: Schema.Types.ObjectId, ref: "Activity" }],
 });

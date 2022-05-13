@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Details } from "./Details";
 import axios from "axios";
 
-export const ItemActivity = ({ activity }) => {
-  console.log("activity", activity);
-
+export const ItemActivity = ({ activity, events, updatedUser }) => {
+  // console.log("activity", activity);
+  // const [updateEvents, setUpdateEvents] = useState();
   const {
     _id,
     name,
@@ -32,6 +31,25 @@ export const ItemActivity = ({ activity }) => {
     }
   };
 
+  // const handleAttendTwo = (activityId) => {
+  //   if (!events?.includes(activityId)) {
+  //     events?.push(activityId);
+  //   } else {
+  //     console.log("clicked");
+  //     const updatedEventsList = events.filter((event) => event !== activityId);
+  //     setUpdateEvents(updatedEventsList);
+  //     console.log("updatedEventsList", updatedEventsList);
+  //     console.log("updateduser", updatedUser);
+  //   }
+  // };
+
+  const isAttended = (activityId) => {
+    if (events?.includes(activityId)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   return (
     <div className="activity-list">
       <center>
@@ -66,8 +84,7 @@ export const ItemActivity = ({ activity }) => {
                         type="button"
                         className="btn btn-outline-dark btn-sm btn-floating"
                       >
-                        Attend
-                        <i className="fas fa-plus"></i>
+                        {isAttended ? "unattend" : "attend"}
                       </button>
 
                       <Link

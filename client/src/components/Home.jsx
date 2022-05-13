@@ -7,6 +7,7 @@ import Story from "./Story";
 const Home = (props) => {
   // console.log("props", props.loggedInUser?.name);
   const { loggedInUser } = props;
+  console.log(loggedInUser);
   return (
     <div>
       <Story user={loggedInUser} />

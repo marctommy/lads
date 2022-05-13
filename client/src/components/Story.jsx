@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Carousel } from "react-bootstrap";
 
 const Story = ({ user }) => {
+  console.log(user);
   const { name, eventsAttended } = user;
   return (
     <div>
@@ -10,7 +11,12 @@ const Story = ({ user }) => {
         <div className="card story">
           <h1> Hello {name}</h1>
           {/* <p> You have attended {eventsAttended.length} Events.</p> */}
-          <p> You recently attended {eventsAttended || "Event"}</p>
+          {/* {eventsAttended?.map((oneEvent) => {
+            <p key={user.eventsAttended.id}>
+              {" "}
+              You recently attended {oneEvent.name || "Event"}
+            </p>;
+          })} */}
           <Carousel>
             <Carousel.Item interval={6000}>
               <img
@@ -19,10 +25,8 @@ const Story = ({ user }) => {
                 alt="First slide"
               />
               <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
+                <h3>Welcome to the LADs community!</h3>
+                <p>Create an account. It is free and quick.</p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item interval={500}>
@@ -32,8 +36,10 @@ const Story = ({ user }) => {
                 alt="Second slide"
               />
               <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>So many activities at your fingertip.</h3>
+                <p>
+                  To be in balance with your job, being a loving dad and person.
+                </p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -43,10 +49,10 @@ const Story = ({ user }) => {
                 alt="Third slide"
               />
               <Carousel.Caption>
-                <h3>Third slide label</h3>
+                <h3>A happy wife means a happy relationship.</h3>
                 <p>
-                  Praesent commodo cursus magna, vel scelerisque nisl
-                  consectetur.
+                  Tap into your hobbies and skills experience fatherhood in a
+                  completely new way!
                 </p>
               </Carousel.Caption>
             </Carousel.Item>

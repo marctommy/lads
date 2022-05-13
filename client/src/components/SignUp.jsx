@@ -16,14 +16,14 @@ const hobbiesList = [
 ];
 
 const avatarList = [
-  { text: "Glasses Blond", avatarId: "glassesdark" },
-  { text: "Glasses Dark", avatarId: "glassesblonde" },
-  { text: "Laughing", avatarId: "laughing" },
-  { text: "Moustache", avatarId: "moustache" },
-  { text: "Old Nerd", avatarId: "oldnerd" },
-  { text: "Redhair", avatarId: "redhair" },
-  { text: "Suit", avatarId: "suit" },
-  { text: "Talking", avatarId: "talking" },
+  { text: "Glasses_Dark", avatarId: "glassesdark", id: 1 },
+  { text: "Glasses_Blonde", avatarId: "glassesblonde", id: 2 },
+  { text: "Laughing", avatarId: "laughing", id: 3 },
+  { text: "Moustache", avatarId: "moustache", id: 4 },
+  { text: "Old Nerd", avatarId: "oldnerd", id: 5 },
+  { text: "Redhair", avatarId: "redhair", id: 6 },
+  { text: "Suit", avatarId: "suit", id: 7 },
+  { text: "Talking", avatarId: "talking", id: 8 },
 ];
 
 const SignUp = (props) => {
@@ -34,9 +34,10 @@ const SignUp = (props) => {
   const [password, setPassword] = useState("");
   const [hobbies, setHobbies] = useState([]);
   const [avatarId, setAvatarId] = useState("");
+  const [location, setLocation] = useState("");
 
   const submitUserRegisteration = () => {
-    signup(name, email, password, hobbies, avatarId).then((user) => {
+    signup(name, email, password, hobbies, avatarId, location).then((user) => {
       console.log(user);
       props.setLoggedInUser(user);
       navigate("/");
@@ -85,6 +86,15 @@ const SignUp = (props) => {
         />
       </label>
       <label>
+        Location
+        <input
+          type="location"
+          placeholder="ex. Warschauer Strasse 10"
+          name="location"
+          onChange={(event) => setLocation(event.target.value)}
+        />
+      </label>
+      <label>
         Hobbies
         <Multiselect
           name="hobbies"
@@ -95,11 +105,12 @@ const SignUp = (props) => {
         />
       </label>
       <label>
-        Choose an Avatar
         <sections>
+          {" "}
+          Choose an Avatar
           {avatarList.map((avatar) => (
             <img
-              className="profile-photo"
+              className="profile-photo-selection"
               src={require(`./UserProfile/avatars/${avatar.avatarId}.gif`)}
               onClick={() => setAvatarId(avatar.avatarId)}
               key={avatar.avatarId}

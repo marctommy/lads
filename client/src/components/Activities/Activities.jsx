@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Activity.css";
-import FilterBtn from "./FilterBtn";
 import { ItemActivity } from "./ItemActivity";
 import { LoadingComponent } from "../Header/LoadingComponent";
 import Weather from "../Features/Weather";
 
 const Activities = ({ loggedInUser }) => {
   const [listOfActivities, setListOfActivities] = useState([]);
-
+  console.log("loggedInUser", loggedInUser);
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get("http://localhost:3005/api/activities/");
@@ -25,14 +24,21 @@ const Activities = ({ loggedInUser }) => {
     <LoadingComponent />
   ) : (
     <div>
-      <Weather loggedInUser={loggedInUser} />
-      {/* <FilterBtn /> */}
-      <Link to="/activities/create" className="activity-btn">
-        Create Activity
-      </Link>
-      {listOfActivities?.map((activity, index) => (
-        <ItemActivity activity={activity} key={activity.name} />
-      ))}
+      <center>
+        <Weather loggedInUser={loggedInUser} />
+
+        <Link to="/activities/create" className="activity-btn">
+          Create Activity
+        </Link>
+        {listOfActivities?.map((activity, index) => (
+          <ItemActivity
+            activity={activity}
+            // events={loggedInUser.eventsAttended}
+            updatedUser={loggedInUser}
+            key={activity.name}
+          />
+        ))}
+      </center>
     </div>
   );
 };
