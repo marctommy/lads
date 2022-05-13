@@ -28,7 +28,10 @@ const Activities = ({ loggedInUser }) => {
         <Weather loggedInUser={loggedInUser} />
 
         <Link to="/activities/create" className="activity-btn">
-          Create Activity
+          Create Own
+        </Link>
+        <Link to="/activities/create/template" className="activity-btn">
+          Choose Template
         </Link>
         {listOfActivities?.map((activity, index) => (
           <ItemActivity

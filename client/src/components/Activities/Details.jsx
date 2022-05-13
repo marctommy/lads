@@ -42,14 +42,6 @@ export const Details = ({ loggedInUser }) => {
         <span className="badge rounded-pill bg-primary">
           {activity.category}
         </span>
-        {/* <span className="badge rounded-pill bg-secondary">DIY</span>
-        <span className="badge rounded-pill bg-success">Mindfulness</span>
-        <span className="badge rounded-pill bg-danger">Sports</span>
-        <span className="badge rounded-pill bg-dark">Games</span>
-        <span className="badge rounded-pill bg-warning text-dark">
-          & Children
-        </span>
-        <span className="badge rounded-pill bg-light text-dark">Others</span> */}
       </center>
       <hr />
       <div className="details-container">

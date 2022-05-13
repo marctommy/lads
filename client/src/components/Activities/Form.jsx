@@ -7,8 +7,12 @@ const Form = ({ loggedInUser }) => {
   const navigate = useNavigate();
   const [categoryId, setCategoryId] = useState();
   const [newActivity, setNewActivity] = useState({
-    title: "",
+    name: "",
     description: "",
+    date: "",
+    start: "",
+    withChildren: "",
+    location: "",
     duration: 0,
     category: "",
   });
@@ -33,83 +37,141 @@ const Form = ({ loggedInUser }) => {
     { text: "Mindfulness", categoryId: "Mindfulness" },
     { text: "Sports", categoryId: "Sports" },
     { text: "Games", categoryId: "Games" },
-    { text: "Children", categoryId: "& Children" },
+    { text: "Networking", categoryId: "Networking" },
     { text: "Others", categoryId: "Others" },
   ];
 
   return (
-    <form className="card" onSubmit={handleSubmit}>
-      <label>
-        Name
-        <input
-          type="text"
-          onChange={(event) => {
-            setNewActivity({
-              ...newActivity,
-              name: event.target.value,
-            });
-          }}
-          value={newActivity.name}
-        />
-      </label>
+    <center>
+      <div className="form">
+        <form className="card" onSubmit={handleSubmit}>
+          <label>
+            Name
+            <input
+              type="text"
+              onChange={(event) => {
+                setNewActivity({
+                  ...newActivity,
+                  name: event.target.value,
+                });
+              }}
+              value={newActivity.name}
+            />
+          </label>
 
-      <label>
-        Description
-        <input
-          type="text"
-          onChange={(event) => {
-            setNewActivity({
-              ...newActivity,
-              description: event.target.value,
-            });
-          }}
-          value={newActivity.description}
-        />
-      </label>
+          <label>
+            Description
+            <input
+              type="text"
+              onChange={(event) => {
+                setNewActivity({
+                  ...newActivity,
+                  description: event.target.value,
+                });
+              }}
+              value={newActivity.description}
+            />
+          </label>
 
-      <label>
-        Duration
-        <input
-          type="number"
-          onChange={(event) => {
-            setNewActivity({
-              ...newActivity,
-              duration: event.target.value,
-            });
-          }}
-          value={newActivity.duration}
-        />
-      </label>
+          <label>
+            Date
+            <input
+              type="date"
+              onChange={(event) => {
+                setNewActivity({
+                  ...newActivity,
+                  date: event.target.value,
+                });
+              }}
+              value={newActivity.date}
+            />
+          </label>
 
-      <center>
-        <span>
-          <strong> </strong>
-        </span>{" "}
-        Category:
-        <section>
-          {categories.map((category) => (
-            <span
-              className={`badge rounded-pill ${
-                categoryId === category.categoryId
-                  ? "bg-success"
-                  : "bg-secondary"
-              }`}
-              onClick={() => setCategoryId(category.categoryId)}
-              key={category.categoryId}
-            >
-              {category.text}
-            </span>
-          ))}
-        </section>
-      </center>
+          <label>
+            Start
+            <input
+              type="time"
+              onChange={(event) => {
+                setNewActivity({
+                  ...newActivity,
+                  time: event.target.value,
+                });
+              }}
+              value={newActivity.time}
+            />
+          </label>
 
-      <button
-        type="submit"
-        className="btn btn-outline-dark btn-sm btn-floating"
-      >
-        Create
-      </button>
-    </form>
+          <label>
+            With Children?
+            <input
+              type="checkbox"
+              onChange={(event) => {
+                setNewActivity({
+                  ...newActivity,
+                  withChildren: event.target.value,
+                });
+              }}
+              value={newActivity.withChildren}
+            />
+          </label>
+
+          <label>
+            Location
+            <input
+              type="text"
+              onChange={(event) => {
+                setNewActivity({
+                  ...newActivity,
+                  location: event.target.value,
+                });
+              }}
+              value={newActivity.location}
+            />
+          </label>
+
+          <label>
+            Duration
+            <input
+              type="number"
+              onChange={(event) => {
+                setNewActivity({
+                  ...newActivity,
+                  duration: event.target.value,
+                });
+              }}
+              value={newActivity.duration}
+            />
+          </label>
+          <center>
+            <span>
+              <strong> </strong>
+            </span>{" "}
+            Category:
+            <section>
+              {categories.map((category) => (
+                <span
+                  className={`badge rounded-pill ${
+                    categoryId === category.categoryId
+                      ? "bg-success"
+                      : "bg-secondary"
+                  }`}
+                  onClick={() => setCategoryId(category.categoryId)}
+                  key={category.categoryId}
+                >
+                  {category.text}
+                </span>
+              ))}
+            </section>
+          </center>
+          <button
+            type="submit"
+            className="btn btn-outline-dark btn-sm btn-floating"
+          >
+            Create
+          </button>
+        </form>
+      </div>
+    </center>
   );
 };
 

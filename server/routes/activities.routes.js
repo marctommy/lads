@@ -4,9 +4,29 @@ const router = express.Router();
 const Activity = require("../models/Activity.model");
 
 router.post("/create", (req, res) => {
-  const { name, description, duration, category, user } = req.body;
+  const {
+    name,
+    description,
+    date,
+    start,
+    withChildren,
+    location,
+    duration,
+    user,
+    category,
+  } = req.body;
   console.log(req.body);
-  Activity.create({ name, description, duration, category, user })
+  Activity.create({
+    name,
+    description,
+    date,
+    start,
+    withChildren,
+    location,
+    duration,
+    user,
+    category,
+  })
     .then((newActivity) => {
       // console.log(newActivity);
       res.json(newActivity);

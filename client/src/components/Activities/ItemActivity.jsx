@@ -43,6 +43,9 @@ export const ItemActivity = ({ activity, events, updatedUser }) => {
   //   }
   // };
 
+  // toggleDisabled = () =>
+  //   this.setState((state) => ({ isDisabled: !state.isDisabled }));
+
   const isAttended = (activityId) => {
     if (events?.includes(activityId)) {
       return true;

@@ -11,7 +11,7 @@ const hobbiesList = [
   { name: "Sports", id: 5 },
   { name: "Workout", id: 6 },
   { name: "DIY", id: 7 },
-  { name: "& Children", id: 8 },
+  { name: "Networking", id: 8 },
   { name: "Other", id: 9 },
 ];
 

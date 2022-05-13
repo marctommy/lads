@@ -47,3 +47,8 @@ form button {
 .activity-list {
   width: 90vw;
 }
+
+.form {
+  width: 80vw;
+  height: 50vh;
+}

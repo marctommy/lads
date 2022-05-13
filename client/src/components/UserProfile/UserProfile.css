@@ -8,3 +8,17 @@
   margin: 5px;
   border-radius: 15px;
 }
+
+.user-profile {
+  width: 80vw;
+}
+
+.profile-button {
+  border-radius: 90px;
+  border: none;
+}
+
+.profile-bubble {
+  position: absolute;
+  align-items: center;
+}

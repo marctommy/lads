@@ -15,6 +15,7 @@ import Header from "./components/Header/Header";
 import { Details } from "./components/Activities/Details";
 import ChatContainer from "./components/Chat/ChatContainer";
 import "bootstrap/dist/css/bootstrap.css";
+import { TemplateActivity } from "./components/Activities/TemplateActivity";
 
 function App() {
   const navigate = useNavigate();
@@ -72,6 +73,11 @@ function App() {
           <Route
             path="/activities/create"
             element={<Form loggedInUser={loggedInUser} />}
+          />
+
+          <Route
+            path="/activities/create/template"
+            element={<TemplateActivity loggedInUser={loggedInUser} />}
           />
 
           <Route
