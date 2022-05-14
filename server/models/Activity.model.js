@@ -4,7 +4,6 @@ const activitySchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
   },
   description: {
     type: String,
@@ -21,7 +20,7 @@ const activitySchema = new Schema({
   withChildren: Boolean,
   location: String,
   duration: Number,
-  user: { type: Schema.Types.ObjectId, ref: "User" }, // change to creator
+  user: { type: Schema.Types.ObjectId, ref: "User" },
   conversation: [{ type: Schema.Types.ObjectId, ref: "Message" }],
   category: String,
 });

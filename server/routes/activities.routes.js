@@ -46,6 +46,7 @@ router.get("/:id", (req, res) => {
   const { id } = req.params;
   Activity.findById(id)
     .populate("conversation")
+    .populate("user")
     .then((activity) => {
       res.json(activity);
     })
