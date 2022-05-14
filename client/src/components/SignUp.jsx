@@ -38,7 +38,6 @@ const SignUp = (props) => {
 
   const submitUserRegisteration = () => {
     signup(name, email, password, hobbies, avatarId, location).then((user) => {
-      console.log(user);
       props.setLoggedInUser(user);
       navigate("/");
     });
@@ -49,8 +48,6 @@ const SignUp = (props) => {
 
     setHobbies(hobbyStrings);
   };
-
-  console.log(avatarId);
 
   // const handleChange = (newAvatar) => {
   //   const

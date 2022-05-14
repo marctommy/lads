@@ -36,8 +36,7 @@ const Activities = ({ loggedInUser }) => {
         {listOfActivities?.map((activity, index) => (
           <ItemActivity
             activity={activity}
-            // events={loggedInUser.eventsAttended}
-            updatedUser={loggedInUser}
+            loggedInUser={loggedInUser}
             key={activity.name}
           />
         ))}

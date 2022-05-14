@@ -13,7 +13,6 @@ const Weather = ({ loggedInUser }) => {
   axios
     .get(URL)
     .then((response) => {
-      console.log("wetter", response.data);
       setWeather();
     })
     .catch((error) => console.log(error));

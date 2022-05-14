@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-export const ItemActivity = ({ activity, events, updatedUser }) => {
-  // console.log("activity", activity);
-  // const [updateEvents, setUpdateEvents] = useState();
+export const ItemActivity = ({ activity, loggedInUser }) => {
   const {
     _id,
     name,
@@ -16,15 +14,23 @@ export const ItemActivity = ({ activity, events, updatedUser }) => {
     user,
   } = activity;
 
+  console.log("loggedInUserCheck", loggedInUser);
+  const [isAttended, setIsAttended] = useState(
+    loggedInUser.eventsAttended?.includes(_id)
+  );
+
+  // const [updateEvents, setUpdateEvents] = useState();
+
   const handleAttend = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:3005/api/user/${user._id}`,
+        `http://localhost:3005/api/user/${loggedInUser._id}`,
         {
           newEventId: _id,
         }
       );
+      setIsAttended(true);
       console.log("attend", response);
     } catch (error) {
       console.log(error);
@@ -46,13 +52,6 @@ export const ItemActivity = ({ activity, events, updatedUser }) => {
   // toggleDisabled = () =>
   //   this.setState((state) => ({ isDisabled: !state.isDisabled }));
 
-  const isAttended = (activityId) => {
-    if (events?.includes(activityId)) {
-      return true;
-    } else {
-      return false;
-    }
-  };
   return (
     <div className="activity-list">
       <center>
@@ -83,11 +82,12 @@ export const ItemActivity = ({ activity, events, updatedUser }) => {
                         Location:{location}
                       </span>
                       <button
+                        disabled={isAttended}
                         onClick={handleAttend}
                         type="button"
                         className="btn btn-outline-dark btn-sm btn-floating"
                       >
-                        {isAttended ? "unattend" : "attend"}
+                        {isAttended ? "attended" : "attend"}
                       </button>
 
                       <Link

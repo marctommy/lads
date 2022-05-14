@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = (props, { loggedInUser }) => {
-  console.log(props);
   const { isLoggedIn } = props;
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">

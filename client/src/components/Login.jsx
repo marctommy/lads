@@ -13,7 +13,6 @@ const Login = (props) => {
 
   const handleSubmit = () => {
     login(email, password).then((user) => {
-      console.log(user);
       props.setLoggedInUser(user);
       navigate("/");
     });

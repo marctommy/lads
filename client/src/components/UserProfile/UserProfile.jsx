@@ -13,10 +13,7 @@ export default function UserProfile({ loggedInUser }) {
     location = "Berlin",
   } = loggedInUser;
 
-  console.log(hobbies);
-
   const handleWelcome = () => {
-    console.log("clicked");
     return (
       <img
         className="profile-bubble"
@@ -41,7 +38,7 @@ export default function UserProfile({ loggedInUser }) {
               onClick={handleWelcome}
               className="profile-photo"
               alt="profile"
-              src={profile}
+              src={require(`./avatars/${avatarId}.gif`)}
             />
           </button>
         </center>

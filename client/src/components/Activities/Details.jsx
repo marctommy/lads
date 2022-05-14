@@ -4,9 +4,8 @@ import axios from "axios";
 import { EditActivity } from "./EditActivity";
 import DeleteActivity from "./DeleteActivity";
 import { LoadingComponent } from "../Header/LoadingComponent";
-// import { Map } from "../Features/Map";
+
 import ChatContainer from "../Chat/ChatContainer";
-import map from "./maps.png";
 
 export const Details = ({ loggedInUser }) => {
   const [activity, setActivity] = useState();
@@ -49,9 +48,7 @@ export const Details = ({ loggedInUser }) => {
           <p className="text-left">
             <strong>Description: </strong>
             {activity.description}
-            {/* <Map locationInfo={activity} /> */}
           </p>
-          <img className="detail-map" alt="map" src={map} />
           <DeleteActivity activity={activity} />
 
           <button

@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Carousel } from "react-bootstrap";
 
 const Story = ({ user }) => {
-  console.log(user);
   const { name, eventsAttended } = user;
   return (
     <div>
@@ -28,7 +27,7 @@ const Story = ({ user }) => {
               <h5>Welcome to the LADs community!</h5>
             </Carousel.Caption>
           </Carousel.Item>
-          {/* <Carousel.Item interval={500}>
+          <Carousel.Item interval={500}>
             <img
               className="d-block w-100"
               // src={require("./assets/findactivities.gif")}
@@ -45,7 +44,7 @@ const Story = ({ user }) => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              // src={require("./assets/superdads.gif")}
+              src={require("./assets/welcome.gif")}
               alt="Third slide"
             />
             <Carousel.Caption>
@@ -58,7 +57,7 @@ const Story = ({ user }) => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              // src={require("./assets/wife.jpg")}
+              src={require("./assets/welcome.gif")}
               alt="Third slide"
             />
 
@@ -69,7 +68,7 @@ const Story = ({ user }) => {
                 completely new way!
               </p>
             </Carousel.Caption>
-          </Carousel.Item> */}
+          </Carousel.Item>
         </Carousel>
       </center>
     </div>

@@ -6,7 +6,6 @@ export const EditActivity = ({ activity }) => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  console.log("activity", activity);
   const [updatedActivity, setUpdatedActivity] = useState({
     name: activity.name,
     description: activity.description,
@@ -21,14 +20,12 @@ export const EditActivity = ({ activity }) => {
         `http://localhost:3005/api/activities/${id}`,
         { ...updatedActivity }
       );
-      console.log(update);
+
       navigate("/activities");
     } catch (error) {
       console.log(error);
     }
   };
-
-  console.log(activity);
 
   return (
     <div>
@@ -80,7 +77,12 @@ export const EditActivity = ({ activity }) => {
           <section> {activity.category}</section>
         </center>
 
-        <button type="submit">Update</button>
+        <button
+          className="btn btn-outline-dark btn-sm btn-floating"
+          type="submit"
+        >
+          Update
+        </button>
       </form>
     </div>
   );

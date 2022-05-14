@@ -11,7 +11,7 @@ const Form = ({ loggedInUser }) => {
     description: "",
     date: "",
     start: "",
-    withChildren: "",
+    withChildren: false,
     location: "",
     duration: 0,
     category: "",
@@ -92,12 +92,13 @@ const Form = ({ loggedInUser }) => {
             <input
               type="time"
               onChange={(event) => {
+                console.log("time", event);
                 setNewActivity({
                   ...newActivity,
-                  time: event.target.value,
+                  start: event.target.value,
                 });
               }}
-              value={newActivity.time}
+              value={newActivity.start}
             />
           </label>
 
@@ -106,9 +107,10 @@ const Form = ({ loggedInUser }) => {
             <input
               type="checkbox"
               onChange={(event) => {
+                console.log("checkbox", event);
                 setNewActivity({
                   ...newActivity,
-                  withChildren: event.target.value,
+                  withChildren: event.target.checked,
                 });
               }}
               value={newActivity.withChildren}
