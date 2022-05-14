@@ -33,76 +33,76 @@ export const TemplateActivity = () => {
 
   const templateList = [
     {
-      value: "Cooking and Griling ",
+      label: "Cooking and Griling ",
       description:
         "Being able to feed yourself well is a basic part of self-sufficiency, guys. Moreover, when you learn how things go together, and how to create a perfect meal from scratch, you make yourself an asset in any hungry situation.",
-      id: 1,
+      value: 1,
     },
     {
-      value: "Exercise and play a sport",
+      label: "Exercise and play a sport",
       description:
         "To stay fit and healthy, you can do exercise alone, such as swimming or working out at a gym, or you can play a team sport, such as football or basketball.",
       duration: "2",
-      id: 2,
+      value: 2,
     },
     {
-      value: "Music Instrument",
+      label: "Music Instrument",
       description: "Learn and play together",
-      id: 3,
+      value: 3,
     },
     {
-      value: "Go to cultural locations and events",
+      label: "Go to cultural locations and events",
       description:
         "You can go to the museum, to an art gallery or to the zoo to see animals from around the world. You can go to concerts, plays, musicals, dance recitals and opera performances.",
-      id: 3,
+      value: 3,
     },
     {
-      value: "Play Date with children",
+      label: "Play Date with children",
       description:
         "Your child(ren) is the focus here. Bring your children together and exchange ideas and tips with other fathers.",
       withChildren: true,
-      id: 4,
+      value: 4,
     },
     {
-      value: "Talk and walk",
+      label: "Talk and walk",
       description:
         "Take your peer for a walk and talk about life, the weather, but not politics.",
-      id: 5,
+      value: 5,
     },
     {
-      value: "Power of Creativity",
+      label: "Power of Creativity",
       description:
         "Photography, exchange of ideas, design and coding, online marketing, Painting, drawing or others.",
-      id: 6,
+      value: 6,
     },
     {
-      value: "Running",
+      label: "Running",
       description:
         "Go for a run, compete, train for the next big charity race.",
-      id: 7,
+      value: 7,
     },
     {
-      value: "Long walks and hikes",
+      label: "Long walks and hikes",
       description: "Fresh air clears the head. Just keep walking.",
-      id: 8,
+      value: 8,
     },
     {
-      value: "On the big screen",
+      label: "On the big screen",
       description:
         "Watch soccer or sports events, binge a tv show or enjoy a bloke movie together over beer and snacks or cook a meal before",
-      id: 9,
+      value: 9,
     },
     {
-      value: "Meditation and Yoga",
+      label: "Meditation and Yoga",
       description:
         "Meeting in the park or at home for a session of yoga and practising mindfulness together over a 30 minute meditation",
-      id: 10,
+      value: 10,
     },
     {
-      value: "Co-Working",
+      label: "Co-Working",
       description:
         "Have a project in mind that you always wanted to pursue further? Co-Working is the place for finding other like-minded enthusiasts helping to get this project get togethe.",
-      id: 11,
+      value: 11,
     },
   ];
 
@@ -116,16 +116,15 @@ export const TemplateActivity = () => {
               <Select
                 className="basic-single"
                 classNamePrefix="select"
-                defaultValue={templateList[0]}
                 name="activity"
                 options={templateList}
-                onChange={(event) => {
+                onChange={(selectedActivity) => {
                   setNewActivity({
                     ...newActivity,
-                    name: event.target.value,
+                    description: selectedActivity.description,
+                    name: selectedActivity.label
                   });
                 }}
-                value={newActivity.name}
               />
             </label>
 

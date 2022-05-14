@@ -15,7 +15,6 @@ router.post("/create", (req, res) => {
     user,
     category,
   } = req.body;
-  console.log(req.body);
   Activity.create({
     name,
     description,
@@ -28,14 +27,12 @@ router.post("/create", (req, res) => {
     category,
   })
     .then((newActivity) => {
-      // console.log(newActivity);
       res.json(newActivity);
     })
     .catch((error) => console.log(error));
 });
 
 router.get("/", function (req, res, next) {
-  // console.log("activities", res.json);
   Activity.find()
     .populate("user")
     .sort({ $natural: -1 })

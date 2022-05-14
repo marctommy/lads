@@ -12,8 +12,6 @@ const DeleteActivity = ({ activity }) => {
 
   const navigate = useNavigate();
 
-  console.log("Activity", activity);
-
   const deleteFromDb = async (event) => {
     event.preventDefault();
 
@@ -22,7 +20,6 @@ const DeleteActivity = ({ activity }) => {
         `http://localhost:3005/api/activities/${id}`,
         { ...deletedActivity }
       );
-      console.log(update);
       navigate("/activities");
     } catch (error) {
       console.log(error);

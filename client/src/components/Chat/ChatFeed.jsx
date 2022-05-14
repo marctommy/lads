@@ -2,7 +2,6 @@ import React from "react";
 import { ChatBubble } from "./ChatBubble";
 import "./Chat.css";
 export const ChatFeed = ({ messages, loggedInUser }) => {
-  console.log(messages);
   const bubbles =
     messages &&
     [...messages].reverse().map((messageObject) => {

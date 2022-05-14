@@ -10,19 +10,8 @@ const ChatContainer = ({ loggedInUser, conversation }) => {
 
   const socketRef = React.useRef();
 
-  // React.useEffect(() => {
-  //   chat
-  //     .getPreviousMessages(activity._id)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setFeed(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
   React.useEffect(() => {
     socketRef.current = io.connect(process.env.REACT_APP_API_BASE_URL);
-    console.log("mount socket:", socketRef.current);
     socketRef.current.on("message", (messageData) => {
       setFeed([...feed, messageData]);
     });
@@ -33,7 +22,6 @@ const ChatContainer = ({ loggedInUser, conversation }) => {
     chat
       .sendMessage(loggedInUser, newMessage)
       .then((response) => {
-        console.log("response axios:", response, socketRef.current);
         socketRef.current.emit("message", {
           ...response.data,
           sendBy: loggedInUser,

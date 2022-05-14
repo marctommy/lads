@@ -102,7 +102,7 @@ const SignUp = (props) => {
         />
       </label>
       <label>
-        <sections>
+        <section>
           {" "}
           Choose an Avatar
           {avatarList.map((avatar) => (
@@ -114,7 +114,7 @@ const SignUp = (props) => {
               alt={avatar.text}
             />
           ))}
-        </sections>
+        </section>
       </label>
 
       <button onClick={submitUserRegisteration}>Register</button>
