@@ -92,7 +92,6 @@ const Form = ({ loggedInUser }) => {
             <input
               type="time"
               onChange={(event) => {
-                console.log("time", event);
                 setNewActivity({
                   ...newActivity,
                   start: event.target.value,
@@ -107,7 +106,6 @@ const Form = ({ loggedInUser }) => {
             <input
               type="checkbox"
               onChange={(event) => {
-                console.log("checkbox", event);
                 setNewActivity({
                   ...newActivity,
                   withChildren: event.target.checked,

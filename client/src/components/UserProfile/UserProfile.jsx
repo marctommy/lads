@@ -4,11 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import profile from "./avatars/profile.gif";
 
 export default function UserProfile({ loggedInUser }) {
+  console.log(loggedInUser)
   const {
     // _id,
     name,
-    hobbies,
-    avatarId,
+    hobbies = [],
+    avatarId = 'glassesblonde',
     eventsAttended,
     location = "Berlin",
   } = loggedInUser;
@@ -45,13 +46,13 @@ export default function UserProfile({ loggedInUser }) {
         <center>
           <span>Here For:</span>
           <br />{" "}
-          <sections>
+          <section>
             {hobbies.map((hobby) => (
               <span className="badge rounded-pill bg-primary" key={hobby.id}>
                 {hobby}
               </span>
             ))}
-          </sections>
+          </section>
         </center>
         <hr />
         <p className="text-left">

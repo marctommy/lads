@@ -8,15 +8,11 @@ import Weather from "../Features/Weather";
 
 const Activities = ({ loggedInUser }) => {
   const [listOfActivities, setListOfActivities] = useState([]);
-  console.log("loggedInUser", loggedInUser);
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get("http://localhost:3005/api/activities/");
-      // console.log(res);
-
       setListOfActivities(res.data);
     };
-    // console.log(listOfActivities);
     fetchData();
   }, []);
 

@@ -14,7 +14,6 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
     user,
   } = activity;
 
-  console.log("loggedInUserCheck", loggedInUser);
   const [isAttended, setIsAttended] = useState(
     loggedInUser.eventsAttended?.includes(_id)
   );
@@ -31,26 +30,10 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
         }
       );
       setIsAttended(true);
-      console.log("attend", response);
     } catch (error) {
       console.log(error);
     }
   };
-
-  // const handleAttendTwo = (activityId) => {
-  //   if (!events?.includes(activityId)) {
-  //     events?.push(activityId);
-  //   } else {
-  //     console.log("clicked");
-  //     const updatedEventsList = events.filter((event) => event !== activityId);
-  //     setUpdateEvents(updatedEventsList);
-  //     console.log("updatedEventsList", updatedEventsList);
-  //     console.log("updateduser", updatedUser);
-  //   }
-  // };
-
-  // toggleDisabled = () =>
-  //   this.setState((state) => ({ isDisabled: !state.isDisabled }));
 
   return (
     <div className="activity-list">

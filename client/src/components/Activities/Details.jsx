@@ -19,7 +19,6 @@ export const Details = ({ loggedInUser }) => {
         `http://localhost:3005/api/activities/${activityId}`
       );
       setActivity(data);
-      console.log(data);
     };
     fetchData();
   }, [activityId]);
