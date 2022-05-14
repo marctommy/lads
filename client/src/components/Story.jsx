@@ -17,7 +17,7 @@ const Story = ({ user }) => {
           })} */}
 
         <Carousel className="card story" fade>
-          <Carousel.Item interval={6000}>
+          <Carousel.Item interval={7000}>
             <img
               className="d-block w-100"
               src={require("./assets/welcome.gif")}
@@ -30,7 +30,7 @@ const Story = ({ user }) => {
           <Carousel.Item interval={500}>
             <img
               className="d-block w-100"
-              // src={require("./assets/findactivities.gif")}
+              src={require("./assets/welcome.gif")}
               alt="Second slide"
             />
             <Carousel.Caption>

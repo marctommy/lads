@@ -25,9 +25,9 @@ const Navbar = (props, { loggedInUser }) => {
       )}
 
       {isLoggedIn ? (
-        <h3 className="navbar-heading">
-          Welcome back, {props.currentUser.name}
-        </h3>
+        <span className="navbar-heading">
+          Welcome, {props.currentUser.name}
+        </span>
       ) : (
         <Link to="/login">
           <button className="nav">Login</button>

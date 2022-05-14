@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Details } from "./Details";
 
 export const ItemActivity = ({ activity, loggedInUser }) => {
   const {
@@ -14,12 +15,12 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
     user,
   } = activity;
 
+  console.log("user", user);
+
   console.log("loggedInUserCheck", loggedInUser);
   const [isAttended, setIsAttended] = useState(
     loggedInUser.eventsAttended?.includes(_id)
   );
-
-  // const [updateEvents, setUpdateEvents] = useState();
 
   const handleAttend = async (event) => {
     event.preventDefault();
@@ -36,22 +37,6 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
       console.log(error);
     }
   };
-
-  // const handleAttendTwo = (activityId) => {
-  //   if (!events?.includes(activityId)) {
-  //     events?.push(activityId);
-  //   } else {
-  //     console.log("clicked");
-  //     const updatedEventsList = events.filter((event) => event !== activityId);
-  //     setUpdateEvents(updatedEventsList);
-  //     console.log("updatedEventsList", updatedEventsList);
-  //     console.log("updateduser", updatedUser);
-  //   }
-  // };
-
-  // toggleDisabled = () =>
-  //   this.setState((state) => ({ isDisabled: !state.isDisabled }));
-
   return (
     <div className="activity-list">
       <center>
@@ -65,12 +50,21 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
                   key={category.id}
                 >
                   {category}
+                </span>{" "}
+                <br />
+                <span>
+                  {" "}
+                  <strong> Duration: mininum {duration} hours</strong>
+                  <br /> on Date {date || "Now"}{" "}
                 </span>
                 <div className="small mb-0">
                   <i className="far fa-star fa-lg"></i>
-                  created by {user.name}
+                  Created by {user.name}
+                  <img
+                    alt="Profile"
+                    // src={require(`../UserProfile/avatars/${user.avatarId}`)}
+                  />
                   <div className="mx-2">|</div> In Berlin
-                  <strong> {duration} hours</strong> on Date {date || "Now"}
                   <div className="d-flex justify-content-start align-items-center">
                     <div className="mb-0 text-udivercase">
                       <span className="text-muted small">
@@ -96,6 +90,7 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
                       >
                         Details
                       </Link>
+                      <Details userInfo={activity} />
                     </div>
                   </div>
                 </div>

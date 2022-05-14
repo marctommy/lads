@@ -71,6 +71,11 @@ function App() {
           />
 
           <Route
+            path="/activities/:id"
+            element={<Details loggedInUser={loggedInUser} />}
+          />
+
+          <Route
             path="/activities/create"
             element={<Form loggedInUser={loggedInUser} />}
           />

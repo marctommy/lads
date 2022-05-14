@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import { EditActivity } from "./EditActivity";
 import DeleteActivity from "./DeleteActivity";
@@ -7,7 +7,8 @@ import { LoadingComponent } from "../Header/LoadingComponent";
 
 import ChatContainer from "../Chat/ChatContainer";
 
-export const Details = ({ loggedInUser }) => {
+export const Details = ({ loggedInUser, userInfo }) => {
+  console.log("what are the", userInfo);
   const [activity, setActivity] = useState();
   const [showEditForm, setShowEditForm] = useState(false);
 
@@ -34,6 +35,7 @@ export const Details = ({ loggedInUser }) => {
           <br />
           <small>{activity.location || "Berlin"}</small>
         </h2>
+        {/* <div> Created By: {user.name}</div> */}
       </center>
 
       <center>
