@@ -18,7 +18,7 @@
   border: none;
 }
 
-.profile-bubble {
-  position: absolute;
-  align-items: center;
+.chat-bubble {
+  width: 110px;
+  padding-right: 40px;
 }

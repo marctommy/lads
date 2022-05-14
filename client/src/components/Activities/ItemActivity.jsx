@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Details } from "./Details";
 
 export const ItemActivity = ({ activity, loggedInUser }) => {
   const {
     _id,
     name,
     description,
+    start,
     duration,
     category,
-    location = "Berlin",
+    location,
     date,
     user,
   } = activity;
 
-  console.log("user", user);
-
-  console.log("loggedInUserCheck", loggedInUser);
+  console.log("activity", activity);
   const [isAttended, setIsAttended] = useState(
     loggedInUser.eventsAttended?.includes(_id)
   );
@@ -32,11 +30,11 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
         }
       );
       setIsAttended(true);
-      console.log("attend", response);
     } catch (error) {
       console.log(error);
     }
   };
+  console.log("userNOW", user);
   return (
     <div className="activity-list">
       <center>
@@ -47,51 +45,63 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
                 <h3 className="mb-3"> {name}</h3>
                 <span
                   className="badge rounded-pill bg-primary"
-                  key={category.id}
+                  // key={category.id}
                 >
                   {category}
                 </span>{" "}
                 <br />
                 <span>
                   {" "}
-                  <strong> Duration: mininum {duration} hours</strong>
-                  <br /> on Date {date || "Now"}{" "}
+                  <span className="text-muted small">
+                    {" "}
+                    <strong> Duration: mininum {duration} hours</strong>
+                  </span>
+                  <br />
+                  <span className="text-muted small">
+                    {" "}
+                    on Date {date || "Now"}
+                    <br />
+                    Starting at : {start}
+                    <br />
+                    <span className="text-muted small">
+                      {" "}
+                      Created by {user.name}
+                    </span>
+                    <hr />
+                  </span>
                 </span>
-                <div className="small mb-0">
-                  <i className="far fa-star fa-lg"></i>
-                  Created by {user.name}
+                <div className="text-muted small">
                   <img
+                    className="profile-photo-details"
                     alt="Profile"
-                    // src={require(`../UserProfile/avatars/${user.avatarId}`)}
+                    src={require(`../UserProfile/avatars/${user.avatarId}.gif`)}
                   />
-                  <div className="mx-2">|</div> In Berlin
-                  <div className="d-flex justify-content-start align-items-center">
-                    <div className="mb-0 text-udivercase">
-                      <span className="text-muted small">
-                        Description:{description}:
-                      </span>
+                  <br />
+                  <span className="text-muted small">Location:{location}</span>
+                  <br />
 
-                      <br />
-                      <span className="text-muted small">
-                        Location:{location}
-                      </span>
-                      <button
-                        disabled={isAttended}
-                        onClick={handleAttend}
-                        type="button"
-                        className="btn btn-outline-dark btn-sm btn-floating"
-                      >
-                        {isAttended ? "attended" : "attend"}
-                      </button>
+                  <div className="mb-0 text-udivercase">
+                    <span className="text-muted small">
+                      Check Details for more info.
+                    </span>
 
-                      <Link
-                        to={`/activities/${_id}`}
-                        className="btn btn-outline-dark btn-sm btn-floating"
-                      >
-                        Details
-                      </Link>
-                      <Details userInfo={activity} />
-                    </div>
+                    <br />
+
+                    <button
+                      disabled={isAttended}
+                      onClick={handleAttend}
+                      type="button"
+                      className="btn btn-outline-dark btn-sm btn-floating"
+                    >
+                      {isAttended ? "attended" : "attend"}
+                    </button>
+
+                    <Link
+                      to={`/activities/${_id}`}
+                      className="btn btn-outline-dark btn-sm btn-floating"
+                    >
+                      Details
+                    </Link>
                   </div>
                 </div>
               </div>

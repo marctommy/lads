@@ -1,26 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./UserProfile.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import profile from "./avatars/profile.gif";
 
 export default function UserProfile({ loggedInUser }) {
+  const [showChatbubble, setShowChatbubble] = useState(false);
+
   const {
     // _id,
     name,
-    hobbies,
-    avatarId,
+    hobbies = [],
+    avatarId = "glassesblonde",
     eventsAttended,
     location = "Berlin",
   } = loggedInUser;
 
   const handleWelcome = () => {
-    return (
-      <img
-        className="profile-bubble"
-        alt="bubble"
-        src={require("./chatbubble.png")}
-      ></img>
-    );
+    setShowChatbubble(!showChatbubble);
   };
 
   return (
@@ -32,26 +28,31 @@ export default function UserProfile({ loggedInUser }) {
             <br />
             <small>{location}</small>
           </h2>
-
-          <button className="profile-button">
+          {showChatbubble ? (
             <img
-              onClick={handleWelcome}
-              className="profile-photo"
-              alt="profile"
-              src={require(`./avatars/${avatarId}.gif`)}
+              style={{ position: "absolute" }}
+              className="chat-bubble"
+              src={require("./chatbubble.png")}
+              alt="tag"
             />
-          </button>
+          ) : null}
+          <img
+            onClick={handleWelcome}
+            className="profile-photo"
+            alt="profile"
+            src={require(`./avatars/${avatarId}.gif`)}
+          />
         </center>
         <center>
           <span>Here For:</span>
           <br />{" "}
-          <sections>
+          <section>
             {hobbies.map((hobby) => (
               <span className="badge rounded-pill bg-primary" key={hobby.id}>
                 {hobby}
               </span>
             ))}
-          </sections>
+          </section>
         </center>
         <hr />
         <p className="text-left">

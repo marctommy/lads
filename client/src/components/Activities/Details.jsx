@@ -7,8 +7,7 @@ import { LoadingComponent } from "../Header/LoadingComponent";
 
 import ChatContainer from "../Chat/ChatContainer";
 
-export const Details = ({ loggedInUser, userInfo }) => {
-  console.log("what are the", userInfo);
+export const Details = ({ loggedInUser }) => {
   const [activity, setActivity] = useState();
   const [showEditForm, setShowEditForm] = useState(false);
 
@@ -20,13 +19,14 @@ export const Details = ({ loggedInUser, userInfo }) => {
         `http://localhost:3005/api/activities/${activityId}`
       );
       setActivity(data);
-      console.log(data);
     };
     fetchData();
   }, [activityId]);
-
+  console.log("activity", activity);
   if (!activity) return <LoadingComponent />;
 
+  console.log("activity", activity);
+  console.log("logged", loggedInUser);
   return (
     <div className="card">
       <center>
@@ -35,8 +35,13 @@ export const Details = ({ loggedInUser, userInfo }) => {
           <br />
           <small>{activity.location || "Berlin"}</small>
         </h2>
-        {/* <div> Created By: {user.name}</div> */}
+        <div>Created By: {JSON.stringify(activity.user)}</div>
       </center>
+      <img
+        className="profile-photo"
+        alt="profile"
+        // src={require(`../UserProfile/avatars/moustache.gif`)}
+      />
 
       <center>
         <span></span> Category:
@@ -45,12 +50,14 @@ export const Details = ({ loggedInUser, userInfo }) => {
         </span>
       </center>
       <hr />
-      <div className="details-container">
-        <div className="container-left">
-          <p className="text-left">
-            <strong>Description: </strong>
-            {activity.description}
-          </p>
+
+      <p className="text-left">
+        <strong>Description: </strong>
+        {activity.description}
+      </p>
+
+      {loggedInUser._id === activity.user._id ? (
+        <div>
           <DeleteActivity activity={activity} />
 
           <button
@@ -61,12 +68,12 @@ export const Details = ({ loggedInUser, userInfo }) => {
           </button>
           {showEditForm ? <EditActivity activity={activity} /> : null}
         </div>
-        <div className="container-right"></div>
-        <ChatContainer
-          loggedInUser={loggedInUser}
-          conversation={activity.conversation}
-        />
-      </div>
+      ) : null}
+
+      <ChatContainer
+        loggedInUser={loggedInUser}
+        conversation={activity.conversation}
+      />
     </div>
   );
 };

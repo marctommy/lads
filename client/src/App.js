@@ -20,7 +20,7 @@ import { TemplateActivity } from "./components/Activities/TemplateActivity";
 function App() {
   const navigate = useNavigate();
 
-  const [loggedInUser, setLoggedInUser] = React.useState(null);
+  const [loggedInUser, setLoggedInUser] = React.useState({});
   React.useEffect(() => {
     axios
       .get("/api/auth/loggedin")
@@ -43,7 +43,7 @@ function App() {
         logoutHandler={logoutHandler}
       ></Navbar>
       {/* {!!loggedInUser && <ChatContainer loggedInUser={loggedInUser} />} */}
-      <Header />
+      <Header loggedInUser={loggedInUser} />
       <div>
         <Routes>
           <Route
