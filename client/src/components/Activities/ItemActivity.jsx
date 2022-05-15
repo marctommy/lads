@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import AddToCalendar from "./AddToCalendar";
 
 export const ItemActivity = ({ activity, loggedInUser }) => {
   const {
@@ -86,22 +87,27 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
                     </span>
 
                     <br />
+                    <div className="button-container">
+                      <button
+                        disabled={isAttended}
+                        onClick={handleAttend}
+                        type="button"
+                        className="btn btn-outline-dark btn-sm btn-floating"
+                      >
+                        {isAttended ? "attended" : "attend"}
+                      </button>
 
-                    <button
-                      disabled={isAttended}
-                      onClick={handleAttend}
-                      type="button"
-                      className="btn btn-outline-dark btn-sm btn-floating"
-                    >
-                      {isAttended ? "attended" : "attend"}
-                    </button>
-
-                    <Link
-                      to={`/activities/${_id}`}
-                      className="btn btn-outline-dark btn-sm btn-floating"
-                    >
-                      Details
-                    </Link>
+                      <Link
+                        to={`/activities/${_id}`}
+                        className="btn btn-outline-dark btn-sm btn-floating"
+                      >
+                        Details
+                      </Link>
+                      <AddToCalendar
+                        className="calendar-button"
+                        activityToBeAdded={activity}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

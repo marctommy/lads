@@ -17,6 +17,7 @@ router.put("/:id", async (req, res) => {
     hobbies,
     avatarId,
     eventsAttended: updatedEvents,
+    description,
   })
     .then((updatedUser) => {
       res.json(updatedUser);

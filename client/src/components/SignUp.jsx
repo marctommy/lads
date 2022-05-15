@@ -35,9 +35,18 @@ const SignUp = (props) => {
   const [hobbies, setHobbies] = useState([]);
   const [avatarId, setAvatarId] = useState("");
   const [location, setLocation] = useState("");
+  const [description, setDescription] = useState("");
 
   const submitUserRegisteration = () => {
-    signup(name, email, password, hobbies, avatarId, location).then((user) => {
+    signup(
+      name,
+      email,
+      password,
+      hobbies,
+      avatarId,
+      location,
+      description
+    ).then((user) => {
       props.setLoggedInUser(user);
       navigate("/");
     });
@@ -88,6 +97,15 @@ const SignUp = (props) => {
           type="location"
           placeholder="ex. Warschauer Strasse 10"
           name="location"
+          onChange={(event) => setLocation(event.target.value)}
+        />
+      </label>
+      <label>
+        Description
+        <input
+          type="description"
+          placeholder="A bit about yourself"
+          name="description"
           onChange={(event) => setLocation(event.target.value)}
         />
       </label>

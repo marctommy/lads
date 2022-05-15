@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { EditActivity } from "./EditActivity";
 import DeleteActivity from "./DeleteActivity";
@@ -10,6 +10,7 @@ import ChatContainer from "../Chat/ChatContainer";
 export const Details = ({ loggedInUser }) => {
   const [activity, setActivity] = useState();
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showChatbubble, setShowChatbubble] = useState(false);
 
   const { id: activityId } = useParams();
 
@@ -27,53 +28,113 @@ export const Details = ({ loggedInUser }) => {
 
   console.log("activity", activity);
   console.log("logged", loggedInUser);
+
+  const userName = JSON.stringify(activity.user.name, null, 4).replace(
+    /["{[,\}\]]/g,
+    ""
+  );
+
+  const userAvatar = JSON.stringify(activity.user.avatarId, null, 4).replace(
+    /["{[,\}\]]/g,
+    ""
+  );
+
+  const userLocation = JSON.stringify(activity.user.location, null, 4).replace(
+    /["{[,\}\]]/g,
+    ""
+  );
+
+  const userDescription = JSON.stringify(activity.user.description, null, 4);
+
+  console.log("activity ", activity.withChildren);
+
+  const hobbiestList = activity.user.hobbies.map((hobby) => {
+    return <span className="badge rounded-pill bg-success"> {hobby}</span>;
+  });
+
+  const handleWelcome = () => {
+    setShowChatbubble(!showChatbubble);
+  };
+
+  // console.console.log(cleanedUserAvatar);
   return (
-    <div className="card">
-      <center>
-        <h2>
-          {activity.name}
-          <br />
-          <small>{activity.location || "Berlin"}</small>
-        </h2>
-        <div>Created By: {JSON.stringify(activity.user)}</div>
-      </center>
-      <img
-        className="profile-photo"
-        alt="profile"
-        // src={require(`../UserProfile/avatars/moustache.gif`)}
-      />
+    <center>
+      <div className="card activity-list back-img">
+        <center>
+          <h2>{activity.name} </h2>
 
-      <center>
-        <span></span> Category:
-        <span className="badge rounded-pill bg-primary">
-          {activity.category}
-        </span>
-      </center>
-      <hr />
-
-      <p className="text-left">
-        <strong>Description: </strong>
-        {activity.description}
-      </p>
-
-      {loggedInUser._id === activity.user._id ? (
-        <div>
-          <DeleteActivity activity={activity} />
-
-          <button
-            onClick={() => setShowEditForm(!showEditForm)}
-            className="btn btn-outline-dark btn-sm btn-floating"
+          <span className="badge rounded-pill bg-primary">
+            {activity.category}
+          </span>
+          <p className="text-muted small">{activity.location || "Berlin"}</p>
+        </center>
+        {showChatbubble ? (
+          <div
+            style={{ position: "absolute", marginTop: 100, paddingLeft: 440 }}
           >
-            Edit
-          </button>
-          {showEditForm ? <EditActivity activity={activity} /> : null}
-        </div>
-      ) : null}
+            <h4> Hi! My Name is {userName}.</h4>
+            <span> I am currently living in {userLocation}.</span>
+            <hr />
+            <p>
+              <span>{hobbiestList} </span>
+              <br />{" "}
+            </p>
+            <p style={{ width: 250 }}>
+              <strong>About me: </strong>
+              {userDescription || "I will think of something later."}{" "}
+            </p>
+          </div>
+        ) : null}
 
-      <ChatContainer
-        loggedInUser={loggedInUser}
-        conversation={activity.conversation}
-      />
-    </div>
+        <img
+          className="profile-photo activity-profile"
+          alt="profile"
+          src={require(`../UserProfile/avatars/${userAvatar}.gif`)}
+        />
+
+        <center>
+          {" "}
+          <button
+            className="btn btn-outline-dark btn-sm btn-floating"
+            onClick={handleWelcome}
+          >
+            Some facts about me
+          </button>
+        </center>
+        <hr />
+
+        <p className="text-left">
+          <strong>Description: </strong>
+          {activity.description || "Looking for description."}
+        </p>
+
+        {activity.withChildren ? (
+          <img
+            style={{ width: "150px", marginLeft: 500 }}
+            alt="profile"
+            src={require(`../assets/true-children.gif`)}
+          />
+        ) : null}
+
+        {loggedInUser._id === activity.user._id ? (
+          <div>
+            <DeleteActivity activity={activity} />
+
+            <button
+              onClick={() => setShowEditForm(!showEditForm)}
+              className="btn btn-outline-dark btn-sm btn-floating"
+            >
+              Edit
+            </button>
+            {showEditForm ? <EditActivity activity={activity} /> : null}
+          </div>
+        ) : null}
+
+        <ChatContainer
+          loggedInUser={loggedInUser}
+          conversation={activity.conversation}
+        />
+      </div>
+    </center>
   );
 };

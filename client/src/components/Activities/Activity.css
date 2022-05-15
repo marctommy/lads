@@ -59,6 +59,15 @@ form button {
   border-radius: 90px;
 }
 
-.activity-list {
+.back-img {
   background-image: ("../assets/sunshine.gif");
+}
+
+.activity-profile {
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  margin: 5px;
 }

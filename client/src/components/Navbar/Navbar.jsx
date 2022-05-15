@@ -7,7 +7,9 @@ const Navbar = (props, { loggedInUser }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link to="/">
-        <button className="nav">Home</button>
+        <button className="btn btn-outline-dark btn-sm btn-floating">
+          Home
+        </button>
       </Link>
       {isLoggedIn ? (
         <Link to="/user">
@@ -18,7 +20,9 @@ const Navbar = (props, { loggedInUser }) => {
       )}
       {isLoggedIn ? (
         <Link to="/activities">
-          <button className="nav">Activities</button>
+          <button className="btn btn-outline-dark btn-sm btn-floating">
+            Activities
+          </button>
         </Link>
       ) : (
         ""
@@ -30,17 +34,25 @@ const Navbar = (props, { loggedInUser }) => {
         </span>
       ) : (
         <Link to="/login">
-          <button className="nav">Login</button>
+          <button className="btn btn-outline-dark btn-sm btn-floating">
+            Login
+          </button>
         </Link>
       )}
 
       {isLoggedIn ? (
-        <button className="nav" type="button" onClick={props.logoutHandler}>
+        <button
+          className="btn btn-outline-dark btn-sm btn-floating"
+          type="button"
+          onClick={props.logoutHandler}
+        >
           Logout
         </button>
       ) : (
         <Link to="/signup">
-          <button className="nav">Sign Up</button>{" "}
+          <button className="btn btn-outline-dark btn-sm btn-floating">
+            Sign Up
+          </button>{" "}
         </Link>
       )}
     </nav>

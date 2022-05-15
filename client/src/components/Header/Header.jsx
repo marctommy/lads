@@ -3,10 +3,10 @@ import "./Header.css";
 
 export const Header = () => {
   return (
-    <div>
-      <div className="header"> Local Awesome Dads</div>
+    <div className="header-container">
+      <div className="header"> local awesome dads.</div>
       <p className="sub-header">
-        the first social activity planner for real dads
+        The first social activity planner for real dads
       </p>
     </div>
   );
