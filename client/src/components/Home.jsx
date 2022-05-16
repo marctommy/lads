@@ -5,7 +5,6 @@ import "./Home.css";
 import Story from "./Story";
 
 const Home = (props) => {
-  // console.log("props", props.loggedInUser?.name);
   const { loggedInUser } = props;
 
   return (

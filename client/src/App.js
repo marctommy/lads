@@ -16,7 +16,7 @@ import { Details } from "./components/Activities/Details";
 import ChatContainer from "./components/Chat/ChatContainer";
 import "bootstrap/dist/css/bootstrap.css";
 import { TemplateActivity } from "./components/Activities/TemplateActivity";
-
+import UserUpdate from "./components/UserProfile/UserUpdate";
 function App() {
   const navigate = useNavigate();
 
@@ -63,6 +63,11 @@ function App() {
           <Route
             path="/user"
             element={<UserProfile loggedInUser={loggedInUser} />}
+          />
+
+          <Route
+            path="/user/:id/edit"
+            element={<UserUpdate loggedInUser={loggedInUser} />}
           />
 
           <Route

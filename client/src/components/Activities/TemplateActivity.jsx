@@ -131,7 +131,6 @@ export const TemplateActivity = ({ loggedInUser }) => {
                 name="activity"
                 options={templateList}
                 onChange={(selectedActivity) => {
-                  console.log("selectedActivity", selectedActivity);
                   setNewActivity({
                     ...newActivity,
                     description: selectedActivity.description,

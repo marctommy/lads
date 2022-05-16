@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./UserProfile.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import profile from "./avatars/profile.gif";
+import UserUpdate from "./UserUpdate";
 
 export default function UserProfile({ loggedInUser }) {
   const [showChatbubble, setShowChatbubble] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
 
   const {
     // _id,
@@ -13,7 +14,9 @@ export default function UserProfile({ loggedInUser }) {
     avatarId = "glassesblonde",
     eventsAttended,
     location = "Berlin",
+    description,
   } = loggedInUser;
+  console.log("infoUser", loggedInUser);
 
   const handleWelcome = () => {
     setShowChatbubble(!showChatbubble);
@@ -48,7 +51,7 @@ export default function UserProfile({ loggedInUser }) {
           <br />{" "}
           <section>
             {hobbies.map((hobby) => (
-              <span className="badge rounded-pill bg-primary" key={hobby.id}>
+              <span className="badge rounded-pill bg-success" key={hobby.id}>
                 {hobby}
               </span>
             ))}
@@ -57,9 +60,16 @@ export default function UserProfile({ loggedInUser }) {
         <hr />
         <p className="text-left">
           <strong>Bio: </strong>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui,
-          tempor sit amet commodo a, vulputate vel tellus.
+          {description}
         </p>
+
+        <button
+          onClick={() => setShowEditForm(!showEditForm)}
+          className="btn btn-outline-dark btn-sm btn-floating"
+        >
+          Edit
+        </button>
+        {showEditForm ? <UserUpdate loggedInUser={loggedInUser} /> : null}
       </div>
     </center>
   );

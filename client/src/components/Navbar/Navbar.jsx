@@ -13,7 +13,9 @@ const Navbar = (props, { loggedInUser }) => {
       </Link>
       {isLoggedIn ? (
         <Link to="/user">
-          <button className="nav">Profile</button>
+          <button className="btn btn-outline-dark btn-sm btn-floating">
+            Profile
+          </button>
         </Link>
       ) : (
         ""

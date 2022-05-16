@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { atcb_action } from "add-to-calendar-button";
 
 const AddToCalendar = ({ activityToBeAdded }) => {
-  console.log("activityToBeAdded", activityToBeAdded);
-
   const [event, setEvent] = useState({
     name: activityToBeAdded.name,
     description: activityToBeAdded.description,

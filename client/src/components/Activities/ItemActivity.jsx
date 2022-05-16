@@ -16,7 +16,7 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
     user,
   } = activity;
 
-  console.log("activity", activity);
+  console.log("activity", activity.user);
   const [isAttended, setIsAttended] = useState(
     loggedInUser.eventsAttended?.includes(_id)
   );
@@ -35,7 +35,8 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
       console.log(error);
     }
   };
-  console.log("userNOW", user);
+
+  console.log("userNOW", typeof user.name);
   return (
     <div className="activity-list">
       <center>
@@ -44,10 +45,7 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
             <div className="card mb-5">
               <div className="card-body p-4">
                 <h3 className="mb-3"> {name}</h3>
-                <span
-                  className="badge rounded-pill bg-primary"
-                  // key={category.id}
-                >
+                <span className="badge rounded-pill bg-primary">
                   {category}
                 </span>{" "}
                 <br />

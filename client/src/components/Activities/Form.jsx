@@ -152,7 +152,7 @@ const Form = ({ loggedInUser }) => {
                 <span
                   className={`badge rounded-pill ${
                     categoryId === category.categoryId
-                      ? "bg-success"
+                      ? "bg-primary"
                       : "bg-secondary"
                   }`}
                   onClick={() => setCategoryId(category.categoryId)}

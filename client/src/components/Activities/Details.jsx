@@ -26,9 +26,6 @@ export const Details = ({ loggedInUser }) => {
   console.log("activity", activity);
   if (!activity) return <LoadingComponent />;
 
-  console.log("activity", activity);
-  console.log("logged", loggedInUser);
-
   const userName = JSON.stringify(activity.user.name, null, 4).replace(
     /["{[,\}\]]/g,
     ""
