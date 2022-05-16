@@ -3,7 +3,6 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
 const UserUpdate = ({ loggedInUser }) => {
-  console.log("loggedinUserupdate", loggedInUser);
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -13,6 +12,7 @@ const UserUpdate = ({ loggedInUser }) => {
   });
 
   const handleSubmit = async (event) => {
+    console.log("click");
     event.preventDefault();
 
     try {
@@ -23,7 +23,7 @@ const UserUpdate = ({ loggedInUser }) => {
         }
       );
 
-      navigate("/");
+      navigate("/user");
     } catch (error) {
       console.log(error);
     }

@@ -9,8 +9,8 @@ const Form = ({ loggedInUser }) => {
   const [newActivity, setNewActivity] = useState({
     name: "",
     description: "",
-    date: "",
-    start: "",
+    startDate: "",
+    endDate: "",
     withChildren: false,
     location: "",
     duration: 0,
@@ -61,7 +61,8 @@ const Form = ({ loggedInUser }) => {
 
           <label>
             Description
-            <input
+            <br />
+            <textarea
               type="text"
               onChange={(event) => {
                 setNewActivity({
@@ -74,30 +75,30 @@ const Form = ({ loggedInUser }) => {
           </label>
 
           <label>
-            Date
+            start Date
             <input
-              type="date"
+              type="datetime-local"
               onChange={(event) => {
                 setNewActivity({
                   ...newActivity,
-                  date: event.target.value,
+                  startDate: event.target.value,
                 });
               }}
-              value={newActivity.date}
+              value={newActivity.startDate}
             />
           </label>
 
           <label>
-            Start
+            end Date
             <input
-              type="time"
+              type="datetime-local"
               onChange={(event) => {
                 setNewActivity({
                   ...newActivity,
-                  start: event.target.value,
+                  endDate: event.target.value,
                 });
               }}
-              value={newActivity.start}
+              value={newActivity.endDate}
             />
           </label>
 

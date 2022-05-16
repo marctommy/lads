@@ -7,8 +7,8 @@ router.post("/create", (req, res) => {
   const {
     name,
     description,
-    date,
-    start,
+    startDate,
+    endDate,
     withChildren,
     location,
     duration,
@@ -18,8 +18,8 @@ router.post("/create", (req, res) => {
   Activity.create({
     name,
     description,
-    date,
-    start,
+    startDate,
+    endDate,
     withChildren,
     location,
     duration,

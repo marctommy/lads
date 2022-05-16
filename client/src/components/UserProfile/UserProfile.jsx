@@ -16,7 +16,6 @@ export default function UserProfile({ loggedInUser }) {
     location = "Berlin",
     description,
   } = loggedInUser;
-  console.log("infoUser", loggedInUser);
 
   const handleWelcome = () => {
     setShowChatbubble(!showChatbubble);

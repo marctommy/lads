@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import AddToCalendar from "./AddToCalendar";
-
+import moment from "moment";
 export const ItemActivity = ({ activity, loggedInUser }) => {
   const {
     _id,
     name,
     description,
-    start,
+    endDate,
     duration,
     category,
     location,
-    date,
+    startDate,
+    withChildren,
     user,
   } = activity;
-
-  console.log("activity", activity.user);
+  console.log("activity", activity);
   const [isAttended, setIsAttended] = useState(
     loggedInUser.eventsAttended?.includes(_id)
   );
@@ -36,7 +36,6 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
     }
   };
 
-  console.log("userNOW", typeof user.name);
   return (
     <div className="activity-list">
       <center>
@@ -53,19 +52,20 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
                   {" "}
                   <span className="text-muted small">
                     {" "}
-                    <strong> Duration: mininum {duration} hours</strong>
+                    <strong>
+                      {withChildren ? "with Kids" : "without Kids"}{" "}
+                    </strong>
                   </span>
                   <br />
                   <span className="text-muted small">
-                    {" "}
-                    on Date {date || "Now"}
-                    <br />
-                    Starting at : {start}
-                    <br />
-                    <span className="text-muted small">
-                      {" "}
-                      Created by {user.name}
+                    <span>
+                      Starting:{" "}
+                      {moment(startDate).format("dddd DD.MM.YY HH:MM")}
                     </span>
+                    <br />
+                    Ending: {moment(endDate).format("dddd DD.MM.YY HH:MM")}
+                    <br />
+                    {/* <span className="text-muted small"> Created by {user}</span> */}
                     <hr />
                   </span>
                 </span>
@@ -73,7 +73,7 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
                   <img
                     className="profile-photo-details"
                     alt="Profile"
-                    src={require(`../UserProfile/avatars/${user.avatarId}.gif`)}
+                    // src={require(`../UserProfile/avatars/${user.avatarId}.gif`)}
                   />
                   <br />
                   <span className="text-muted small">Location:{location}</span>

@@ -7,7 +7,6 @@ const Story = ({ user }) => {
   return (
     <div>
       <center>
-        <h1> Hello {name}</h1>
         {/* <p> You have attended {eventsAttended.length} Events.</p> */}
         {/* {eventsAttended?.map((oneEvent) => {
             <p key={user.eventsAttended.id}>
@@ -35,10 +34,7 @@ const Story = ({ user }) => {
             />
             <Carousel.Caption>
               <h5>Team up with other Dads!</h5>
-              <p>
-                Create your own super hero story outside of your stressful life
-                as father.
-              </p>
+              <p>and find out why being a dad is like being a super hero.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -48,10 +44,8 @@ const Story = ({ user }) => {
               alt="Third slide"
             />
             <Carousel.Caption>
-              <h5>So many activities at your fingertip.</h5>
-              <p>
-                To be in balance with your job, being a loving dad and person.
-              </p>
+              <h5>Many activities are waiting for you.</h5>
+              <p>Find balance, find peace, find joy.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -64,7 +58,7 @@ const Story = ({ user }) => {
             <Carousel.Caption>
               <h5>A happy wife means a happy relationship.</h5>
               <p>
-                Tap into your hobbies and skills experience fatherhood in a
+                Tap into your hobbies and skills and experience fatherhood in a
                 completely new way!
               </p>
             </Carousel.Caption>

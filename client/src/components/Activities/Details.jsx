@@ -23,7 +23,7 @@ export const Details = ({ loggedInUser }) => {
     };
     fetchData();
   }, [activityId]);
-  console.log("activity", activity);
+
   if (!activity) return <LoadingComponent />;
 
   const userName = JSON.stringify(activity.user.name, null, 4).replace(
@@ -43,8 +43,6 @@ export const Details = ({ loggedInUser }) => {
 
   const userDescription = JSON.stringify(activity.user.description, null, 4);
 
-  console.log("activity ", activity.withChildren);
-
   const hobbiestList = activity.user.hobbies.map((hobby) => {
     return <span className="badge rounded-pill bg-success"> {hobby}</span>;
   });
@@ -53,7 +51,6 @@ export const Details = ({ loggedInUser }) => {
     setShowChatbubble(!showChatbubble);
   };
 
-  // console.console.log(cleanedUserAvatar);
   return (
     <center>
       <div className="card activity-list back-img">

@@ -9,8 +9,8 @@ export const TemplateActivity = ({ loggedInUser }) => {
   const [newActivity, setNewActivity] = useState({
     name: "",
     description: "",
-    date: "",
-    start: "",
+    startDate: "",
+    endDate: "",
     withChildren: false,
     location: "",
     duration: 0,
@@ -142,10 +142,10 @@ export const TemplateActivity = ({ loggedInUser }) => {
             </label>
 
             <label>
-              Description{" "}
-              <input
+              Description <br />
+              <textarea
                 type="text"
-                cols="40"
+                cols="30"
                 rows="5"
                 onChange={(event) => {
                   setNewActivity({
@@ -158,30 +158,30 @@ export const TemplateActivity = ({ loggedInUser }) => {
             </label>
 
             <label>
-              Date
+              startDate
               <input
-                type="date"
+                type="datetime-local"
                 onChange={(event) => {
                   setNewActivity({
                     ...newActivity,
-                    date: event.target.value,
+                    startDate: event.target.value,
                   });
                 }}
-                value={newActivity.date}
+                value={newActivity.startDate}
               />
             </label>
 
             <label>
-              Start
+              endDate
               <input
-                type="time"
+                type="datetime-local"
                 onChange={(event) => {
                   setNewActivity({
                     ...newActivity,
-                    start: event.target.value,
+                    endDate: event.target.value,
                   });
                 }}
-                value={newActivity.start}
+                value={newActivity.endDate}
               />
             </label>
 

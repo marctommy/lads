@@ -9,12 +9,12 @@ const activitySchema = new Schema({
     type: String,
     required: [true, "Description is required."],
   },
-  date: {
+  startDate: {
     type: Date,
     required: true,
   },
-  start: {
-    type: String,
+  endDate: {
+    type: Date,
     required: true,
   },
   withChildren: Boolean,

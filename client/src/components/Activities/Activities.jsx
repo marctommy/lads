@@ -21,7 +21,7 @@ const Activities = ({ loggedInUser }) => {
   ) : (
     <div>
       <center>
-        <Weather loggedInUser={loggedInUser} />
+        {/* <Weather /> */}
 
         <Link to="/activities/create" className="activity-btn">
           Create Own

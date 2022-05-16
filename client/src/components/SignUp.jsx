@@ -102,11 +102,12 @@ const SignUp = (props) => {
       </label>
       <label>
         Description
-        <input
-          type="description"
+        <br />
+        <textarea
+          rows="4"
           placeholder="A bit about yourself"
           name="description"
-          onChange={(event) => setLocation(event.target.value)}
+          onChange={(event) => setDescription(event.target.value)}
         />
       </label>
       <label>
@@ -123,15 +124,17 @@ const SignUp = (props) => {
         <section>
           {" "}
           Choose an Avatar
-          {avatarList.map((avatar) => (
-            <img
-              className="profile-photo-selection"
-              src={require(`./UserProfile/avatars/${avatar.avatarId}.gif`)}
-              onClick={() => setAvatarId(avatar.avatarId)}
-              key={avatar.avatarId}
-              alt={avatar.text}
-            />
-          ))}
+          <div>
+            {avatarList.map((avatar) => (
+              <img
+                className="profile-photo-selection"
+                src={require(`./UserProfile/avatars/${avatar.avatarId}.gif`)}
+                onClick={() => setAvatarId(avatar.avatarId)}
+                key={avatar.avatarId}
+                alt={avatar.text}
+              />
+            ))}
+          </div>
         </section>
       </label>
 

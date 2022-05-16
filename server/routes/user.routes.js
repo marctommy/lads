@@ -27,4 +27,20 @@ router.put("/:id", async (req, res) => {
     });
 });
 
+// router.get("/:id", (req, res) => {
+//   const { id } = req.params;
+//   const { name, description } = req.body;
+
+//   User.findById(id, {
+//     name,
+//     description,
+//   })
+//     .then((loggedInUser) => {
+//       res.json(loggedInUser);
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// });
+
 module.exports = router;

@@ -5,18 +5,19 @@ const AddToCalendar = ({ activityToBeAdded }) => {
   const [event, setEvent] = useState({
     name: activityToBeAdded.name,
     description: activityToBeAdded.description,
-    startDate: activityToBeAdded.date,
-    endDate: activityToBeAdded,
+    startDate: activityToBeAdded.startDate,
+    endDate: activityToBeAdded.endDate,
     location: activityToBeAdded.location,
   });
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         atcb_action({
-          name: event.name,
-          startDate: "2022-01-18",
-          endDate: "2022-01-18",
+          name: event.name + "*LADS event",
+          startDate: event.startDate,
+          endDate: event.endDate,
           location: event.location,
           description: event.description,
           options: [
