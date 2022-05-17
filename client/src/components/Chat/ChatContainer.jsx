@@ -33,7 +33,9 @@ const ChatContainer = ({ loggedInUser, conversation }) => {
 
   return (
     <div id="chat-container">
-      <h1>{loggedInUser?.name}</h1>
+      <h3>Hi {loggedInUser?.name},</h3>
+      <p>here you can talk with the other lads about this activity.</p>
+
       <ChatFeed messages={feed} loggedInUser={loggedInUser} />
       <ChatForm sendMessage={handleSendMessage} />
     </div>

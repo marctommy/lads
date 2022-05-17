@@ -19,7 +19,7 @@ const activitySchema = new Schema({
   },
   withChildren: Boolean,
   location: String,
-  duration: Number,
+  attendees: [{ type: Schema.Types.ObjectId, ref: "User" }],
   user: { type: Schema.Types.ObjectId, ref: "User" },
   conversation: [{ type: Schema.Types.ObjectId, ref: "Message" }],
   category: String,

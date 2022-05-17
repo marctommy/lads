@@ -71,3 +71,11 @@ form button {
   display: flex;
   margin: 5px;
 }
+
+.edit-form {
+  width: 80vw;
+}
+
+.edit-child {
+  flex-direction: column;
+}

@@ -7,9 +7,11 @@ export const ChatFeed = ({ messages, loggedInUser }) => {
     [...messages].reverse().map((messageObject) => {
       const { sendBy, message, _id } = messageObject;
       const isOwn = loggedInUser?._id === sendBy._id;
+      console.log("loggedInUser", loggedInUser);
       return (
         <ChatBubble
           key={_id}
+          loggedInUser={loggedInUser}
           username={sendBy.name}
           message={message}
           isOwn={isOwn}

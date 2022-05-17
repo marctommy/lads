@@ -11,7 +11,7 @@ router.post("/create", (req, res) => {
     endDate,
     withChildren,
     location,
-    duration,
+    attendees,
     user,
     category,
   } = req.body;
@@ -22,7 +22,7 @@ router.post("/create", (req, res) => {
     endDate,
     withChildren,
     location,
-    duration,
+    attendees,
     user,
     category,
   })
@@ -55,8 +55,15 @@ router.get("/:id", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const { id } = req.params;
-  const { name, description, duration, category } = req.body;
-  Activity.findByIdAndUpdate(id, { name, description, duration, category })
+  const { name, description, location, category, attendees } = req.body;
+  Activity.findByIdAndUpdate(id, {
+    name,
+    description,
+    location,
+    category,
+    attendees,
+  })
+    .populate("user")
     .then(() => {
       res.json({ message: `Activity ${id} was successfully updated` });
     })

@@ -13,7 +13,6 @@ export const TemplateActivity = ({ loggedInUser }) => {
     endDate: "",
     withChildren: false,
     location: "",
-    duration: 0,
     category: "",
   });
 
@@ -44,7 +43,6 @@ export const TemplateActivity = ({ loggedInUser }) => {
       description:
         "To stay fit and healthy, you can do exercise alone, such as swimming or working out at a gym, or you can play a team sport, such as football or basketball.",
       category: "Others",
-      duration: "2",
       value: 2,
     },
     {
@@ -214,19 +212,6 @@ export const TemplateActivity = ({ loggedInUser }) => {
               />
             </label>
 
-            <label>
-              Duration
-              <input
-                type="number"
-                onChange={(event) => {
-                  setNewActivity({
-                    ...newActivity,
-                    duration: event.target.value,
-                  });
-                }}
-                value={newActivity.duration}
-              />
-            </label>
             <center>
               <span>
                 <strong> </strong>
