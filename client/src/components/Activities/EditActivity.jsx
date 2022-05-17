@@ -9,7 +9,7 @@ export const EditActivity = ({ activity }) => {
   const [updatedActivity, setUpdatedActivity] = useState({
     name: activity.name,
     description: activity.description,
-    duration: activity.duration,
+    location: activity.location,
   });
 
   const handleSubmit = async (event) => {
@@ -28,63 +28,63 @@ export const EditActivity = ({ activity }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input
-            type="text"
-            onChange={(event) => {
-              setUpdatedActivity({
-                ...updatedActivity,
-                name: event.target.value,
-              });
-            }}
-            value={updatedActivity.name}
-          />
-        </label>
+    <center>
+      <div className="card edit-form" style={{ position: "absolute" }}>
+        <form onSubmit={handleSubmit}>
+          <div className="edit-child">
+            <label>
+              Name
+              <input
+                type="text"
+                onChange={(event) => {
+                  setUpdatedActivity({
+                    ...updatedActivity,
+                    name: event.target.value,
+                  });
+                }}
+                value={updatedActivity.name}
+              />
+            </label>
+          </div>
+          <div className="edit-child">
+            <label>
+              Description
+              <br />
+              <textarea
+                type="text"
+                onChange={(event) => {
+                  setUpdatedActivity({
+                    ...updatedActivity,
+                    description: event.target.value,
+                  });
+                }}
+                value={updatedActivity.description}
+              />
+            </label>
+          </div>
+          <label>
+            Location
+            <input
+              type="text"
+              onChange={(event) => {
+                setUpdatedActivity({
+                  ...updatedActivity,
+                  location: event.target.value,
+                });
+              }}
+              value={updatedActivity.location}
+            />
+          </label>
 
-        <label>
-          Description
-          <input
-            type="text"
-            onChange={(event) => {
-              setUpdatedActivity({
-                ...updatedActivity,
-                description: event.target.value,
-              });
-            }}
-            value={updatedActivity.description}
-          />
-        </label>
-
-        <label>
-          Duration
-          <input
-            type="number"
-            onChange={(event) => {
-              setUpdatedActivity({
-                ...updatedActivity,
-                duration: event.target.value,
-              });
-            }}
-            value={updatedActivity.duration}
-          />
-        </label>
-
-        <center>
-          Category:
-          <section> {activity.category}</section>
-        </center>
-
-        <button
-          className="btn btn-outline-dark btn-sm btn-floating"
-          type="submit"
-        >
-          Update
-        </button>
-      </form>
-    </div>
+          <button
+            className="btn btn-outline-dark btn-sm btn-floating"
+            type="submit"
+          >
+            Update
+          </button>
+        </form>
+      </div>
+    </center>
   );
 };
 

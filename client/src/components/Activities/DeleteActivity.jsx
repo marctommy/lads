@@ -7,7 +7,6 @@ const DeleteActivity = ({ activity }) => {
   const [deletedActivity, setDeletedActivity] = useState({
     name: activity.name,
     description: activity.description,
-    duration: activity.duration,
   });
 
   const navigate = useNavigate();

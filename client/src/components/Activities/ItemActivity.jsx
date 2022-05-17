@@ -9,7 +9,7 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
     name,
     description,
     endDate,
-    duration,
+    attendees,
     category,
     location,
     startDate,

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import MapsInput from "./MapsInput";
 
 const Form = ({ loggedInUser }) => {
   const { _id } = loggedInUser;
@@ -13,7 +14,6 @@ const Form = ({ loggedInUser }) => {
     endDate: "",
     withChildren: false,
     location: "",
-    duration: 0,
     category: "",
   });
 
@@ -131,19 +131,6 @@ const Form = ({ loggedInUser }) => {
             />
           </label>
 
-          <label>
-            Duration
-            <input
-              type="number"
-              onChange={(event) => {
-                setNewActivity({
-                  ...newActivity,
-                  duration: event.target.value,
-                });
-              }}
-              value={newActivity.duration}
-            />
-          </label>
           <center>
             <span>
               <strong> </strong>
@@ -165,6 +152,9 @@ const Form = ({ loggedInUser }) => {
               ))}
             </section>
           </center>
+
+          <MapsInput />
+
           <button
             type="submit"
             className="btn btn-outline-dark btn-sm btn-floating"

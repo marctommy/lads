@@ -1,14 +1,18 @@
 import React from "react";
 import "./Chat.css";
-export const ChatBubble = ({ name, message, isOwn }) => {
+export const ChatBubble = ({ username, message, isOwn, loggedInUser }) => {
   const className = isOwn ? "chat-bubble own" : "chat-bubble";
 
+  console.log("other", username);
+  console.log("");
   return (
-    <div className={className}>
-      <p>
-        {!isOwn && <span>{name}</span>}
-        {message}
-      </p>
+    <div>
+      <div className={className}>
+        <p>
+          {!isOwn && <span>{username}:</span>}
+          {message}
+        </p>
+      </div>
     </div>
   );
 };
