@@ -28,10 +28,9 @@ const Footer = () => {
               <img
                 style={{
                   borderRadius: 100,
-                  widht: 160,
-                  height: 160,
+                  widht: 170,
+                  height: 180,
                 }}
-                className=""
                 src={require("../assets/profile.gif")}
                 alt="tag"
               />
