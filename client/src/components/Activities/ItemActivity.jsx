@@ -16,7 +16,7 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
     withChildren,
     user,
   } = activity;
-  console.log("activity", activity);
+
   const [isAttended, setIsAttended] = useState(
     loggedInUser.eventsAttended?.includes(_id)
   );

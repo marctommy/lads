@@ -17,6 +17,7 @@ import ChatContainer from "./components/Chat/ChatContainer";
 import "bootstrap/dist/css/bootstrap.css";
 import { TemplateActivity } from "./components/Activities/TemplateActivity";
 import UserUpdate from "./components/UserProfile/UserUpdate";
+import Footer from "./components/Footer/Footer";
 function App() {
   const navigate = useNavigate();
 
@@ -97,6 +98,7 @@ function App() {
           <Route path="/activities/:id/edit" element={<Form />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,39 +1,53 @@
-// import React, { useState } from "react";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./Weather.css";
+const Weather = () => {
+  const city = "Berlin";
+  const country = "Germany";
+  const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
-// const Weather = () => {
-//   const [weather, setWeather] = useState({
-//     description: "",
-//     temperature: 0,
-//   });
+  const [weather, setWeather] = useState({});
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
+      );
 
-//   const city = "Berlin";
-//   const country = "Germany";
-//   const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+      setWeather({
+        description: response.data.weather[0].description,
+        temperature: response.data.main.temp,
+      });
+    };
+    fetchData();
+  }, []);
+  console.log(weather);
+  return (
+    <div className="weather-container">
+      {/* sunny */}
+      {weather.description === "clear sky" || "few clouds" ? (
+        <div class="sunny"></div>
+      ) : null}
+      {/* cloudy */}
+      {weather.description === "scattered clouds" || "broken clouds" ? (
+        <div class="cloudy"></div>
+      ) : null}
+      {/* rainy */}
+      {weather.description === "shower rain" ? <div class="rainy"></div> : null}
+      {/* rainbow */}
+      {weather.description === "rain" ? <div class="rainbow"></div> : null}
+      {/* stormy */}
+      {weather.description === "thunderstorm" ? (
+        <div class="stormy"></div>
+      ) : null}
+      {/* snow  */}
+      {weather.description === "snow" ? <div class="snowy"></div> : null}
 
-//   const URL = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`;
-//   axios
-//     .get(URL)
-//     .then((response) => {
-//       console.log("wetter", response.data);
-//       const description = response.data.weather[0].description;
-//       const temperature = response.data.main.temp;
-//       const feelsLike = response.data.main.feels_like;
-//       return setWeather({
-//         description: description,
-//         temperature: temperature,
-//         feelsLike: feelsLike,
-//       });
-//     })
-//     .catch((error) => console.log(error));
+      <div>
+        <p> {weather.description} </p>
+        <h4> {weather.temperature}°C</h4>
+      </div>
+    </div>
+  );
+};
 
-//   return (
-//     <div>
-//       <h1>{weather.description}</h1>
-//       <h3> {weather.temperature}C</h3>
-//       <h4> {weather.feelsLike}</h4>
-//     </div>
-//   );
-// };
-
-// export default Weather;
+export default Weather;

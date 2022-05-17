@@ -5,7 +5,7 @@ import "./Navbar.css";
 const Navbar = (props, { loggedInUser }) => {
   const { isLoggedIn } = props;
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar justify-content-center navbar-expand-lg navbar-light bg-light">
       <Link to="/">
         <button className="btn btn-outline-dark btn-sm btn-floating">
           Home
@@ -31,9 +31,7 @@ const Navbar = (props, { loggedInUser }) => {
       )}
 
       {isLoggedIn ? (
-        <span className="navbar-heading">
-          Welcome, {props.currentUser.name}
-        </span>
+        <span className="navbar-heading">{props.currentUser.name}</span>
       ) : (
         <Link to="/login">
           <button className="btn btn-outline-dark btn-sm btn-floating">
