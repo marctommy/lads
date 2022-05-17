@@ -3,7 +3,7 @@ import "./UserProfile.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UserUpdate from "./UserUpdate";
 
-export default function UserProfile({ loggedInUser }) {
+export default function UserProfile({ loggedInUser, setLoggedInUser }) {
   const [showChatbubble, setShowChatbubble] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
 
@@ -68,7 +68,7 @@ export default function UserProfile({ loggedInUser }) {
         >
           Edit
         </button>
-        {showEditForm ? <UserUpdate loggedInUser={loggedInUser} /> : null}
+        {showEditForm ? <UserUpdate loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> : null}
       </div>
     </center>
   );

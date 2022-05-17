@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
-const UserUpdate = ({ loggedInUser }) => {
+const UserUpdate = ({ loggedInUser, setLoggedInUser }) => {
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -23,8 +23,7 @@ const UserUpdate = ({ loggedInUser }) => {
         }
       );
 
-      console.log("response", response);
-      navigate("/");
+      setLoggedInUser(response.data)
     } catch (error) {
       console.log(error);
     }

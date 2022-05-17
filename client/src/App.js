@@ -75,7 +75,7 @@ function App() {
 
             <Route
               path="/user"
-              element={<UserProfile loggedInUser={loggedInUser} />}
+              element={<UserProfile loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />}
             />
 
             <Route
