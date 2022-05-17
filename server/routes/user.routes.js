@@ -6,7 +6,7 @@ router.put("/:id", async (req, res) => {
   const { id } = req.params;
 
   const { name, description, hobbies, avatarId, newEventId } = req.body;
-
+  console.log("req", req.body);
   const loggedInUser = await User.findById(id);
   const { eventsAttended } = loggedInUser;
   // Id already in array?
@@ -20,6 +20,7 @@ router.put("/:id", async (req, res) => {
     eventsAttended: updatedEvents,
   })
     .then((updatedUser) => {
+      console.log("updated", updatedUser);
       res.json(updatedUser);
     })
     .catch((error) => {

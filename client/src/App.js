@@ -48,8 +48,8 @@ function App() {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <div className="App">
-        <button onClick={themeToggler}>Switch Theme</button>
         <Navbar
+          themeToggler={themeToggler}
           currentUser={loggedInUser}
           isLoggedIn={!!loggedInUser}
           logoutHandler={logoutHandler}

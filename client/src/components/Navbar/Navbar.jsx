@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = (props, { loggedInUser }) => {
-  const { isLoggedIn } = props;
+const Navbar = (props) => {
+  const { isLoggedIn, themeToggler } = props;
+
   return (
     <nav className="navbar justify-content-center navbar-expand-lg navbar-light bg-light">
       <Link to="/">
@@ -30,9 +31,7 @@ const Navbar = (props, { loggedInUser }) => {
         ""
       )}
 
-      {isLoggedIn ? (
-        <span className="navbar-heading">{props.currentUser.name}</span>
-      ) : (
+      {isLoggedIn ? null : (
         <Link to="/login">
           <button className="btn btn-outline-dark btn-sm btn-floating">
             Login
@@ -55,6 +54,12 @@ const Navbar = (props, { loggedInUser }) => {
           </button>{" "}
         </Link>
       )}
+      <button
+        className="btn btn-outline-dark btn-sm btn-floating"
+        onClick={themeToggler}
+      >
+        Switch Theme
+      </button>
     </nav>
   );
 };

@@ -23,7 +23,8 @@ const UserUpdate = ({ loggedInUser }) => {
         }
       );
 
-      navigate("/user");
+      console.log("response", response);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -31,6 +32,7 @@ const UserUpdate = ({ loggedInUser }) => {
 
   return (
     <div>
+      <hr />
       <form onSubmit={handleSubmit}>
         <label>
           Name
@@ -45,10 +47,11 @@ const UserUpdate = ({ loggedInUser }) => {
             value={updatedUser.name}
           />
         </label>
+        <br />
 
         <label>
           Description
-          <input
+          <textarea
             type="text"
             onChange={(event) => {
               setUpdatedUser({
@@ -57,6 +60,21 @@ const UserUpdate = ({ loggedInUser }) => {
               });
             }}
             value={updatedUser.description}
+          />
+        </label>
+        <br />
+
+        <label>
+          Location
+          <input
+            type="text"
+            onChange={(event) => {
+              setUpdatedUser({
+                ...updatedUser,
+                location: event.target.value,
+              });
+            }}
+            value={updatedUser.location}
           />
         </label>
 

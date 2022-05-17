@@ -35,7 +35,7 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
       console.log(error);
     }
   };
-
+  console.log("user", user);
   return (
     <div className="activity-list">
       <center>
@@ -65,7 +65,10 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
                     <br />
                     Ending: {moment(endDate).format("dddd DD.MM.YY HH:MM")}
                     <br />
-                    {/* <span className="text-muted small"> Created by {user}</span> */}
+                    <span className="text-muted small">
+                      {" "}
+                      Created by {user.name}
+                    </span>
                     <hr />
                   </span>
                 </span>
@@ -73,7 +76,7 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
                   <img
                     className="profile-photo-details"
                     alt="Profile"
-                    // src={require(`../UserProfile/avatars/${user.avatarId}.gif`)}
+                    src={require(`../UserProfile/avatars/${user.avatarId}.gif`)}
                   />
                   <br />
                   <span className="text-muted small">Location:{location}</span>

@@ -28,8 +28,8 @@ const Footer = () => {
               <img
                 style={{
                   borderRadius: 100,
-                  widht: 170,
-                  height: 180,
+                  widht: 150,
+                  height: 160,
                 }}
                 src={require("../assets/profile.gif")}
                 alt="tag"
@@ -44,24 +44,16 @@ const Footer = () => {
             <Column>
               <Heading>Social Media</Heading>
               <FooterLink href="#">
-                <i className="fab fa-facebook-f">
-                  <span style={{ marginLeft: "10px" }}>Facebook</span>
-                </i>
+                <span style={{ marginLeft: "10px" }}>Facebook</span>
               </FooterLink>
               <FooterLink href="#">
-                <i className="fab fa-instagram">
-                  <span style={{ marginLeft: "10px" }}>Instagram</span>
-                </i>
+                <span style={{ marginLeft: "10px" }}>Instagram</span>
               </FooterLink>
               <FooterLink href="#">
-                <i className="fab fa-twitter">
-                  <span style={{ marginLeft: "10px" }}>Twitter</span>
-                </i>
+                <span style={{ marginLeft: "10px" }}>Twitter</span>
               </FooterLink>
               <FooterLink href="#">
-                <i className="fab fa-youtube">
-                  <span style={{ marginLeft: "10px" }}>Youtube</span>
-                </i>
+                <span style={{ marginLeft: "10px" }}>Youtube</span>
               </FooterLink>
             </Column>
             <Column>

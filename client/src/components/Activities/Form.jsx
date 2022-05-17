@@ -105,6 +105,7 @@ const Form = ({ loggedInUser }) => {
           <label>
             With Children?
             <input
+              className="form-check-input"
               type="checkbox"
               onChange={(event) => {
                 setNewActivity({

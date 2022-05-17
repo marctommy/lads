@@ -26,22 +26,25 @@ export const Details = ({ loggedInUser }) => {
 
   if (!activity) return <LoadingComponent />;
 
-  const userName = JSON.stringify(activity.user.name, null, 4).replace(
-    /["{[,\}\]]/g,
-    ""
-  );
+  // console.log("username", typeof activity.user.name);
+  // const userName = JSON.stringify(activity.user.name, null, 4).replace(
+  //   /["{[,\}\]]/g,
+  //   ""
+  // );
+  // console.log(typeof userName);
 
-  const userAvatar = JSON.stringify(activity.user.avatarId, null, 4).replace(
-    /["{[,\}\]]/g,
-    ""
-  );
+  // const userAvatar = JSON.stringify(activity.user.avatarId, null, 4).replace(
+  //   /["{[,\}\]]/g,
+  //   ""
+  // );
 
-  const userLocation = JSON.stringify(activity.user.location, null, 4).replace(
-    /["{[,\}\]]/g,
-    ""
-  );
+  // const userLocation = JSON.stringify(activity.user.location, null, 4).replace(
+  //   /["{[,\}\]]/g,
+  //   ""
+  // );
+  // console.log("userLocation", userLocation);
 
-  const userDescription = JSON.stringify(activity.user.description, null, 4);
+  // const userDescription = JSON.stringify(activity.user.description, null, 4);
 
   const hobbiestList = activity.user.hobbies.map((hobby) => {
     return <span className="badge rounded-pill bg-success"> {hobby}</span>;
@@ -66,8 +69,8 @@ export const Details = ({ loggedInUser }) => {
           <div
             style={{ position: "absolute", marginTop: 100, paddingLeft: 440 }}
           >
-            <h4> Hi! My Name is {userName}.</h4>
-            <span> I am currently living in {userLocation}.</span>
+            <h4> Hi! My Name is {activity.user.name}.</h4>
+            <span> I am currently living in {activity.user.location}.</span>
             <hr />
             <p>
               <span>{hobbiestList} </span>
@@ -75,7 +78,8 @@ export const Details = ({ loggedInUser }) => {
             </p>
             <p style={{ width: 250 }}>
               <strong>About me: </strong>
-              {userDescription || "I will think of something later."}{" "}
+              {activity.user.description ||
+                "I will think of something later."}{" "}
             </p>
           </div>
         ) : null}
@@ -83,7 +87,7 @@ export const Details = ({ loggedInUser }) => {
         <img
           className="profile-photo activity-profile"
           alt="profile"
-          src={require(`../UserProfile/avatars/${userAvatar}.gif`)}
+          src={require(`../UserProfile/avatars/${activity.user.avatarId}.gif`)}
         />
 
         <center>

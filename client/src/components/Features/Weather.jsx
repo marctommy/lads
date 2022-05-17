@@ -24,23 +24,27 @@ const Weather = () => {
   return (
     <div className="weather-container">
       {/* sunny */}
-      {weather.description === "clear sky" || "few clouds" ? (
-        <div class="sunny"></div>
+      {weather.description === "clear sky" ||
+      "broken clouds" ||
+      "few clouds" ? (
+        <div className="sunny"></div>
       ) : null}
       {/* cloudy */}
-      {weather.description === "scattered clouds" || "broken clouds" ? (
-        <div class="cloudy"></div>
+      {weather.description === "scattered clouds" ? (
+        <div className="cloudy"></div>
       ) : null}
       {/* rainy */}
-      {weather.description === "shower rain" ? <div class="rainy"></div> : null}
+      {weather.description === "shower rain" ? (
+        <div className="rainy"></div>
+      ) : null}
       {/* rainbow */}
-      {weather.description === "rain" ? <div class="rainbow"></div> : null}
+      {weather.description === "rain" ? <div className="rainbow"></div> : null}
       {/* stormy */}
       {weather.description === "thunderstorm" ? (
-        <div class="stormy"></div>
+        <div className="stormy"></div>
       ) : null}
       {/* snow  */}
-      {weather.description === "snow" ? <div class="snowy"></div> : null}
+      {weather.description === "snow" ? <div className="snowy"></div> : null}
 
       <div>
         <p> {weather.description} </p>
