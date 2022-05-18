@@ -7,6 +7,7 @@ const Form = ({ loggedInUser }) => {
   const { _id } = loggedInUser;
   const navigate = useNavigate();
   const [categoryId, setCategoryId] = useState();
+  const [location, setLocation] = useState("");
   const [newActivity, setNewActivity] = useState({
     name: "",
     description: "",
@@ -17,13 +18,21 @@ const Form = ({ loggedInUser }) => {
     category: "",
   });
 
+  const getData = (data) => {
+    console.log("coming from MapsInput", data);
+  };
+
+  function handleChange(newLocation) {
+    setLocation(newLocation);
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const response = await axios.post(
         "http://localhost:3005/api/activities/create",
-        { ...newActivity, category: categoryId, user: _id }
+        { ...newActivity, category: categoryId, user: _id, location: location }
       );
       navigate("/activities");
     } catch (error) {
@@ -119,16 +128,7 @@ const Form = ({ loggedInUser }) => {
 
           <label>
             Location
-            <input
-              type="text"
-              onChange={(event) => {
-                setNewActivity({
-                  ...newActivity,
-                  location: event.target.value,
-                });
-              }}
-              value={newActivity.location}
-            />
+            <MapsInput handleSelect={getData} />
           </label>
 
           <center>
@@ -152,8 +152,6 @@ const Form = ({ loggedInUser }) => {
               ))}
             </section>
           </center>
-
-          <MapsInput />
 
           <button
             type="submit"

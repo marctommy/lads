@@ -11,6 +11,7 @@ export const Details = ({ loggedInUser }) => {
   const [activity, setActivity] = useState();
   const [showEditForm, setShowEditForm] = useState(false);
   const [showChatbubble, setShowChatbubble] = useState(false);
+  const [showChat, setShowChat] = useState(false);
 
   const { id: activityId } = useParams();
 
@@ -19,6 +20,7 @@ export const Details = ({ loggedInUser }) => {
       const { data } = await axios.get(
         `http://localhost:3005/api/activities/${activityId}`
       );
+      console.log("data", data);
       setActivity(data);
     };
     fetchData();
@@ -128,10 +130,20 @@ export const Details = ({ loggedInUser }) => {
           </div>
         ) : null}
 
-        <ChatContainer
-          loggedInUser={loggedInUser}
-          conversation={activity.conversation}
-        />
+        <button
+          onClick={() => setShowChat(!showChat)}
+          className="btn btn-outline-dark btn-sm btn-floating"
+        >
+          Chat
+        </button>
+
+        {showChat ? (
+          <ChatContainer
+            activity={activity}
+            loggedInUser={loggedInUser}
+            conversation={activity.conversation}
+          />
+        ) : null}
       </div>
     </center>
   );

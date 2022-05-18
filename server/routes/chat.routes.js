@@ -11,11 +11,13 @@ router.get("/:activityId", (req, res) => {
 });
 
 router.post("/new-message", (req, res) => {
-  const { sendBy, newMessage } = req.body;
+  const { activityId } = req.params;
+  const { sendBy, newMessage, user } = req.body;
   Message.create({
     sendBy: sendBy._id,
     message: newMessage,
   })
+    .populate("user")
     .then((newMessage) => res.status(200).json(newMessage))
     .catch((error) => res.status(500).json(error));
 });

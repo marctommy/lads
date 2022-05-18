@@ -5,9 +5,9 @@ import { chat } from "../../api/service";
 import io from "socket.io-client";
 import "./Chat.css";
 
-const ChatContainer = ({ loggedInUser, conversation }) => {
+const ChatContainer = ({ loggedInUser, conversation, activity }) => {
   const [feed, setFeed] = React.useState(conversation);
-
+  console.log("ActivityID", activity._id);
   const socketRef = React.useRef();
 
   React.useEffect(() => {
