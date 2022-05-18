@@ -28,7 +28,7 @@ const Footer = () => {
               <img
                 style={{
                   borderRadius: 100,
-                  widht: 150,
+                  widht: 160,
                   height: 160,
                 }}
                 src={require("../assets/profile.gif")}

@@ -15,7 +15,8 @@ const Weather = () => {
 
       setWeather({
         description: response.data.weather[0].description,
-        temperature: response.data.main.temp,
+        temperature: Math.floor(response.data.main.temp),
+        max: Math.round(response.data.main.temp_max),
       });
     };
     fetchData();
@@ -47,8 +48,11 @@ const Weather = () => {
       {weather.description === "snow" ? <div className="snowy"></div> : null}
 
       <div>
-        <p> {weather.description} </p>
-        <h4> {weather.temperature}°C</h4>
+        <span>
+          <strong> {weather.description} </strong>
+        </span>
+        <span> current:{weather.temperature}°C,</span>
+        <span> today max:{weather.max}°C</span>
       </div>
     </div>
   );

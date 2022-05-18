@@ -58,7 +58,7 @@ export const Details = ({ loggedInUser }) => {
 
   return (
     <center>
-      <div className="card activity-list back-img">
+      <div className=" activity-text card activity-list back-img">
         <center>
           <h2>{activity.name} </h2>
 

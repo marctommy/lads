@@ -13,7 +13,7 @@ export default function UserProfile({ loggedInUser, setLoggedInUser }) {
     hobbies = [],
     avatarId = "glassesblonde",
     eventsAttended,
-    location = "Berlin",
+    location,
     description,
   } = loggedInUser;
 
@@ -26,9 +26,13 @@ export default function UserProfile({ loggedInUser, setLoggedInUser }) {
       <div className="card user-profile">
         <center>
           <h2>
-            {name || "Name"}
+            <span className="small profile-text">
+              <strong> {name || "Name"}</strong>
+            </span>
             <br />
-            <small>{location}</small>
+            <small>
+              <span className="profile-text">{location}</span>
+            </small>
           </h2>
           {showChatbubble ? (
             <img
@@ -46,7 +50,7 @@ export default function UserProfile({ loggedInUser, setLoggedInUser }) {
           />
         </center>
         <center>
-          <span>Here For:</span>
+          <span className="text-muted small">Here For:</span>
           <br />{" "}
           <section>
             {hobbies.map((hobby) => (
@@ -56,19 +60,20 @@ export default function UserProfile({ loggedInUser, setLoggedInUser }) {
             ))}
           </section>
         </center>
-        <hr />
-        <p className="text-left">
-          <strong>Bio: </strong>
-          {description}
-        </p>
-
+        <hr /> <strong className="profile-text">Bio: </strong>
+        <p className="profile-text fst-italic">"{description}"</p>
         <button
           onClick={() => setShowEditForm(!showEditForm)}
           className="btn btn-outline-dark btn-sm btn-floating"
         >
           Edit
         </button>
-        {showEditForm ? <UserUpdate loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> : null}
+        {showEditForm ? (
+          <UserUpdate
+            loggedInUser={loggedInUser}
+            setLoggedInUser={setLoggedInUser}
+          />
+        ) : null}
       </div>
     </center>
   );

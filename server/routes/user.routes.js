@@ -5,20 +5,26 @@ const User = require("../models/User.model");
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
 
-  const { name, description, hobbies, avatarId, newEventId } = req.body;
+  const { name, description, hobbies, avatarId, newEventId, location } =
+    req.body;
   console.log("req", req.body);
   const loggedInUser = await User.findById(id);
   const { eventsAttended } = loggedInUser;
   // Id already in array?
   const updatedEvents = [...eventsAttended, newEventId];
 
-  User.findByIdAndUpdate(id, {
-    name,
-    description,
-    hobbies,
-    avatarId,
-    eventsAttended: updatedEvents,
-  }, { new: true })
+  User.findByIdAndUpdate(
+    id,
+    {
+      name,
+      description,
+      hobbies,
+      avatarId,
+      eventsAttended: updatedEvents,
+      location: location,
+    },
+    { new: true }
+  )
     .then((updatedUser) => {
       console.log("updated", updatedUser);
       res.json(updatedUser);
@@ -27,21 +33,5 @@ router.put("/:id", async (req, res) => {
       console.log(error);
     });
 });
-
-// router.get("/:id", (req, res) => {
-//   const { id } = req.params;
-//   const { name, description } = req.body;
-
-//   User.findById(id, {
-//     name,
-//     description,
-//   })
-//     .then((loggedInUser) => {
-//       res.json(loggedInUser);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// });
 
 module.exports = router;

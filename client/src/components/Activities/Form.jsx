@@ -54,7 +54,7 @@ const Form = ({ loggedInUser }) => {
     <center>
       <div className="form">
         <form className="card" onSubmit={handleSubmit}>
-          <label>
+          <label className="text-muted small">
             Name
             <input
               type="text"
@@ -68,7 +68,7 @@ const Form = ({ loggedInUser }) => {
             />
           </label>
 
-          <label>
+          <label className="text-muted small">
             Description
             <br />
             <textarea
@@ -83,7 +83,7 @@ const Form = ({ loggedInUser }) => {
             />
           </label>
 
-          <label>
+          <label className="text-muted small">
             start Date
             <input
               type="datetime-local"
@@ -97,7 +97,7 @@ const Form = ({ loggedInUser }) => {
             />
           </label>
 
-          <label>
+          <label className="text-muted small">
             end Date
             <input
               type="datetime-local"
@@ -111,7 +111,7 @@ const Form = ({ loggedInUser }) => {
             />
           </label>
 
-          <label>
+          <label className="text-muted small">
             With Children?
             <input
               className="form-check-input"
@@ -126,17 +126,16 @@ const Form = ({ loggedInUser }) => {
             />
           </label>
 
-          <label>
+          <label className="text-muted small">
             Location
             <MapsInput handleSelect={getData} />
           </label>
 
           <center>
             <span>
-              <strong> </strong>
+              <strong className="text-muted small"> Category: </strong>
             </span>{" "}
-            Category:
-            <section>
+            <section style={{ cursor: "pointer" }}>
               {categories.map((category) => (
                 <span
                   className={`badge rounded-pill ${

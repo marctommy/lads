@@ -20,5 +20,9 @@
 
 .chat-bubble {
   width: 130px;
-  margin-left: -60px;
+  margin-left: -65px;
+}
+
+.profile-text {
+  color: rgb(70, 70, 70);
 }

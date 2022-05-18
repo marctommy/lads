@@ -29,11 +29,20 @@ body {
 }
 
 .profile-photo-selection {
-  width: 160px;
-  height: 160px;
+  width: 100px;
+  height: 100px;
   border-radius: 90px;
 }
 .profile-photo-selection:hover {
-  border: 3px solid #e63946;
-  transform: scale(120%);
+  border: 3px solid #4fd65d;
+  transform: scale(110%);
+  transition: 0.5s linear;
+}
+
+.sign-up {
+  width: 70vw;
+}
+
+.home-text {
+  color: rgb(70, 70, 70);
 }

@@ -34,7 +34,11 @@ const Login = (props) => {
             onChange={handlePasswordChange}
             value={password}
           />
-          <button type="button" onClick={handleSubmit}>
+          <button
+            type="button"
+            className="btn btn-outline-dark btn-sm btn-floating"
+            onClick={handleSubmit}
+          >
             Login
           </button>
           <Link

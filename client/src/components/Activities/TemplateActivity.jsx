@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import axios from "axios";
+import MapsInput from "./MapsInput";
 
 export const TemplateActivity = ({ loggedInUser }) => {
   const navigate = useNavigate();
@@ -200,16 +201,7 @@ export const TemplateActivity = ({ loggedInUser }) => {
 
             <label>
               Location
-              <input
-                type="text"
-                onChange={(event) => {
-                  setNewActivity({
-                    ...newActivity,
-                    location: event.target.value,
-                  });
-                }}
-                value={newActivity.location}
-              />
+              <MapsInput />
             </label>
 
             <center>

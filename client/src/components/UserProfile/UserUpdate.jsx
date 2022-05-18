@@ -23,17 +23,17 @@ const UserUpdate = ({ loggedInUser, setLoggedInUser }) => {
         }
       );
 
-      setLoggedInUser(response.data)
+      setLoggedInUser(response.data);
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div>
+    <div className="user-profile">
       <hr />
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="text-muted small">
           Name
           <input
             type="text"
@@ -48,8 +48,8 @@ const UserUpdate = ({ loggedInUser, setLoggedInUser }) => {
         </label>
         <br />
 
-        <label>
-          Description
+        <label className="text-muted small">
+          Description <br />
           <textarea
             type="text"
             onChange={(event) => {
@@ -63,7 +63,7 @@ const UserUpdate = ({ loggedInUser, setLoggedInUser }) => {
         </label>
         <br />
 
-        <label>
+        <label className="text-muted small">
           Location
           <input
             type="text"

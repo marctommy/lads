@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import AddToCalendar from "./AddToCalendar";
 import moment from "moment";
+import "./Activity.css";
 export const ItemActivity = ({ activity, loggedInUser }) => {
   const {
     _id,
@@ -43,7 +44,7 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
           <div className="col col-xl-10">
             <div className="card mb-5">
               <div className="card-body p-4">
-                <h3 className="mb-3"> {name}</h3>
+                <h3 className="mb-3 activity-text"> {name}</h3>
                 <span className="badge rounded-pill bg-primary">
                   {category}
                 </span>{" "}

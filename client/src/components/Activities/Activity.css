@@ -79,3 +79,7 @@ form button {
 .edit-child {
   flex-direction: column;
 }
+
+.activity-text {
+  color: rgb(70, 70, 70);
+}
