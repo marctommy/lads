@@ -36,7 +36,7 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
       console.log(error);
     }
   };
-  console.log("user", user);
+
   return (
     <div className="activity-list">
       <center>

@@ -15,7 +15,7 @@ const Activities = ({ loggedInUser }) => {
     };
     fetchData();
   }, []);
-  console.log("listOfActivities", listOfActivities);
+
   return !listOfActivities.length > 0 ? (
     <LoadingComponent />
   ) : (

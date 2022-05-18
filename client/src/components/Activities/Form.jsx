@@ -20,11 +20,8 @@ const Form = ({ loggedInUser }) => {
 
   const getData = (data) => {
     console.log("coming from MapsInput", data);
+    setLocation(data);
   };
-
-  function handleChange(newLocation) {
-    setLocation(newLocation);
-  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -128,7 +125,7 @@ const Form = ({ loggedInUser }) => {
 
           <label className="text-muted small">
             Location
-            <MapsInput handleSelect={getData} />
+            <MapsInput getData={getData} />
           </label>
 
           <center>

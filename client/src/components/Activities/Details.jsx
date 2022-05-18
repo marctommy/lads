@@ -20,33 +20,13 @@ export const Details = ({ loggedInUser }) => {
       const { data } = await axios.get(
         `http://localhost:3005/api/activities/${activityId}`
       );
-      console.log("data", data);
+
       setActivity(data);
     };
     fetchData();
   }, [activityId]);
 
   if (!activity) return <LoadingComponent />;
-
-  // console.log("username", typeof activity.user.name);
-  // const userName = JSON.stringify(activity.user.name, null, 4).replace(
-  //   /["{[,\}\]]/g,
-  //   ""
-  // );
-  // console.log(typeof userName);
-
-  // const userAvatar = JSON.stringify(activity.user.avatarId, null, 4).replace(
-  //   /["{[,\}\]]/g,
-  //   ""
-  // );
-
-  // const userLocation = JSON.stringify(activity.user.location, null, 4).replace(
-  //   /["{[,\}\]]/g,
-  //   ""
-  // );
-  // console.log("userLocation", userLocation);
-
-  // const userDescription = JSON.stringify(activity.user.description, null, 4);
 
   const hobbiestList = activity.user.hobbies.map((hobby) => {
     return <span className="badge rounded-pill bg-success"> {hobby}</span>;

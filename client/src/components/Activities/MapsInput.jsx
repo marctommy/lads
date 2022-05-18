@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
 import scriptLoader from "react-async-script-loader";
 
-const MapsInput = ({ isScriptLoaded, isScriptLoadSucceed }) => {
+const MapsInput = ({ isScriptLoaded, isScriptLoadSucceed, getData }) => {
   const [address, setAddress] = useState("");
 
   const handleChange = (value) => {
@@ -10,6 +10,7 @@ const MapsInput = ({ isScriptLoaded, isScriptLoadSucceed }) => {
   };
 
   const handleSelect = (value) => {
+    getData(value);
     setAddress(value);
   };
 
