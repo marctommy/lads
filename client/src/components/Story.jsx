@@ -7,13 +7,12 @@ const Story = ({ user }) => {
   return (
     <div>
       <center>
+        {/* <strong>
+                {" "}
+                {user?.name || "user"} you have attended{" "}
+                {user?.eventsAttended.length || "no"} events.
+              </strong> */}
         {/* <p> You have attended {eventsAttended.length} Events.</p> */}
-        {/* {eventsAttended?.map((oneEvent) => {
-            <p key={user.eventsAttended.id}>
-              {" "}
-              You recently attended {oneEvent.name || "Event"}
-            </p>;
-          })} */}
 
         <Carousel className="card story" fade>
           <Carousel.Item interval={7000}>
@@ -23,7 +22,7 @@ const Story = ({ user }) => {
               alt="First slide"
             />
             <Carousel.Caption>
-              <h5>Welcome to the LADs community!</h5>
+              <h5>Welcome to the LADs community! </h5>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={500}>
@@ -34,7 +33,6 @@ const Story = ({ user }) => {
             />
             <Carousel.Caption>
               <h5>Team up with other Dads!</h5>
-              <p>and find out why being a dad is like being a super hero.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -44,8 +42,8 @@ const Story = ({ user }) => {
               alt="Third slide"
             />
             <Carousel.Caption>
-              <h5>Many activities are waiting for you.</h5>
-              <p>Find balance, find peace, find joy.</p>
+              <h5>Many more activities are waiting:</h5>
+              <p>Adventures, Sports, Gaming and Playdates.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -56,10 +54,10 @@ const Story = ({ user }) => {
             />
 
             <Carousel.Caption>
-              <h5>A happy wife means a happy relationship.</h5>
+              <strong> A happy wife means a happy relationship.</strong>
               <p>
-                Tap into your hobbies and skills and experience fatherhood in a
-                completely new way!
+                Tap into your hobbies and experience fatherhood in a completely
+                new way!
               </p>
             </Carousel.Caption>
           </Carousel.Item>

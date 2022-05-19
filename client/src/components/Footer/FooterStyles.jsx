@@ -56,3 +56,15 @@ export const Heading = styled.p`
   margin-bottom: 40px;
   font-weight: bold;
 `;
+
+export const ContactLink = styled.a`
+  color: #457b9d;
+  margin-bottom: 20px;
+  font-size: 15px;
+  text-decoration: none;
+  font-style: normal;
+  &:hover {
+    color: #a8dadc;
+    transition: 200ms ease-in;
+  }
+`;

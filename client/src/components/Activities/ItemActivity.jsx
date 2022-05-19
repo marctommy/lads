@@ -4,6 +4,7 @@ import axios from "axios";
 import AddToCalendar from "./AddToCalendar";
 import moment from "moment";
 import "./Activity.css";
+import AttendeeToggle from "./AttendeeToggle";
 export const ItemActivity = ({ activity, loggedInUser }) => {
   const {
     _id,
@@ -68,7 +69,7 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
                     <br />
                     <span className="text-muted small">
                       {" "}
-                      Created by {user.name}
+                      Posted by {user.name}
                     </span>
                     <hr />
                   </span>
@@ -98,7 +99,10 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
                       >
                         {isAttended ? "attended" : "attend"}
                       </button>
-
+                      <AttendeeToggle
+                        activity={activity}
+                        loggedInUser={loggedInUser}
+                      />
                       <Link
                         to={`/activities/${_id}`}
                         className="btn btn-outline-dark btn-sm btn-floating"

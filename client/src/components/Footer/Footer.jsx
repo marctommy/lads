@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Container,
@@ -7,8 +7,15 @@ import {
   FooterLink,
   Heading,
 } from "./FooterStyles";
-
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { ContactMe } from "./ContactMe";
 const Footer = () => {
+  const [showDetails, setShowDetails] = useState(false);
+
+  const handleDetails = () => {
+    setShowDetails(!showDetails);
+  };
+
   return (
     <div className="back">
       <Box style={{ bottom: 0 }}>
@@ -21,10 +28,8 @@ const Footer = () => {
         <Container>
           <Row>
             <Column>
-              <Heading>Contact Us</Heading>
-              <FooterLink href="https://www.linkedin.com/in/marctommy/">
-                Marc Tommy on LinkedIn
-              </FooterLink>
+              <Heading>Contact Marc</Heading>
+
               <img
                 style={{
                   borderRadius: 100,
@@ -33,7 +38,9 @@ const Footer = () => {
                 }}
                 src={require("../assets/profile.gif")}
                 alt="tag"
+                onClick={handleDetails}
               />
+              {showDetails ? <ContactMe /> : null}
             </Column>
             <Column>
               <Heading>About Us</Heading>

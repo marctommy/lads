@@ -38,14 +38,19 @@ export const Details = ({ loggedInUser }) => {
 
   return (
     <center>
-      <div className=" activity-text card activity-list back-img">
+      <div
+        className=" activity-text card activity-list back-img"
+        style={{
+          paddingTop: 30,
+          paddingBottom: 30,
+        }}
+      >
         <center>
-          <h2>{activity.name} </h2>
+          <h1>{activity.name} </h1>
 
           <span className="badge rounded-pill bg-primary">
             {activity.category}
           </span>
-          <p className="text-muted small">{activity.location || "Berlin"}</p>
         </center>
         {showChatbubble ? (
           <div
@@ -68,6 +73,7 @@ export const Details = ({ loggedInUser }) => {
 
         <img
           className="profile-photo activity-profile"
+          style={{ marginTop: 30 }}
           alt="profile"
           src={require(`../UserProfile/avatars/${activity.user.avatarId}.gif`)}
         />
@@ -75,6 +81,7 @@ export const Details = ({ loggedInUser }) => {
         <center>
           {" "}
           <button
+            style={{ marginTop: 20 }}
             className="btn btn-outline-dark btn-sm btn-floating"
             onClick={handleWelcome}
           >
@@ -82,48 +89,59 @@ export const Details = ({ loggedInUser }) => {
           </button>
         </center>
         <hr />
-
-        <p className="text-left">
-          <strong>Description: </strong>
-          {activity.description || "Looking for description."}
-        </p>
-
         {activity.withChildren ? (
           <img
-            style={{ width: "150px", marginLeft: 500 }}
+            style={{
+              width: "150px",
+              marginLeft: -400,
+              marginTop: 260,
+              position: "absolute",
+            }}
             alt="profile"
             src={require(`../assets/true-children.gif`)}
           />
         ) : null}
+        <p className="text-left">
+          <strong>Description: </strong>
+          {activity.description || "Looking for description."}
+        </p>
+        <div className="mb-0 text-udivercase">
+          <p className="text-muted small">{activity.location || "Berlin"}</p>{" "}
+        </div>
+        <div>
+          <button
+            onClick={() => setShowChat(!showChat)}
+            className="btn btn-outline-dark btn-sm btn-floating"
+          >
+            Chat
+          </button>
 
-        {loggedInUser._id === activity.user._id ? (
-          <div>
-            <DeleteActivity activity={activity} />
+          {showChat ? (
+            <ChatContainer
+              activity={activity}
+              loggedInUser={loggedInUser}
+              conversation={activity.conversation}
+            />
+          ) : null}
 
-            <button
-              onClick={() => setShowEditForm(!showEditForm)}
-              className="btn btn-outline-dark btn-sm btn-floating"
-            >
-              Edit
-            </button>
-            {showEditForm ? <EditActivity activity={activity} /> : null}
-          </div>
-        ) : null}
+          {loggedInUser._id === activity.user._id ? (
+            <div>
+              {" "}
+              <center>
+                <DeleteActivity activity={activity} />
 
-        <button
-          onClick={() => setShowChat(!showChat)}
-          className="btn btn-outline-dark btn-sm btn-floating"
-        >
-          Chat
-        </button>
+                <button
+                  onClick={() => setShowEditForm(!showEditForm)}
+                  className="btn btn-outline-dark btn-sm btn-floating"
+                >
+                  Edit
+                </button>
 
-        {showChat ? (
-          <ChatContainer
-            activity={activity}
-            loggedInUser={loggedInUser}
-            conversation={activity.conversation}
-          />
-        ) : null}
+                {showEditForm ? <EditActivity activity={activity} /> : null}
+              </center>{" "}
+            </div>
+          ) : null}
+        </div>
       </div>
     </center>
   );

@@ -17,13 +17,11 @@ const hobbiesList = [
 
 const avatarList = [
   { text: "Glasses_Dark", avatarId: "glassesdark", id: 1 },
-  { text: "Glasses_Blonde", avatarId: "glassesblonde", id: 2 },
+  { text: "Redhair", avatarId: "redhair", id: 2 },
   { text: "Laughing", avatarId: "laughing", id: 3 },
   { text: "Moustache", avatarId: "moustache", id: 4 },
   { text: "Old Nerd", avatarId: "oldnerd", id: 5 },
-  { text: "Redhair", avatarId: "redhair", id: 6 },
-  { text: "Suit", avatarId: "suit", id: 7 },
-  { text: "Talking", avatarId: "talking", id: 8 },
+  { text: "Suit", avatarId: "suit", id: 6 },
 ];
 
 const SignUp = (props) => {
@@ -63,83 +61,85 @@ const SignUp = (props) => {
   // }
 
   return (
-    <div className="App card">
-      <label>
-        Name
-        <input
-          type="text"
-          placeholder="Your Name"
-          name="name"
-          onChange={(event) => setName(event.target.value)}
-        />
-      </label>
-      <label>
-        Email
-        <input
-          type="email"
-          placeholder="Your Email"
-          name="email"
-          onChange={(event) => setEmail(event.target.value)}
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          placeholder="min. 8 characters"
-          name="password"
-          onChange={(event) => setPassword(event.target.value)}
-        />
-      </label>
-      <label>
-        Location
-        <input
-          type="location"
-          placeholder="ex. Warschauer Strasse 10"
-          name="location"
-          onChange={(event) => setLocation(event.target.value)}
-        />
-      </label>
-      <label>
-        Description
-        <br />
-        <textarea
-          rows="4"
-          placeholder="A bit about yourself"
-          name="description"
-          onChange={(event) => setDescription(event.target.value)}
-        />
-      </label>
-      <label>
-        Hobbies
-        <Multiselect
-          name="hobbies"
-          displayValue="name"
-          onRemove={handleChange}
-          onSelect={handleChange}
-          options={hobbiesList}
-        />
-      </label>
-      <label>
-        <section>
-          {" "}
-          Choose an Avatar
-          <div>
-            {avatarList.map((avatar) => (
-              <img
-                className="profile-photo-selection"
-                src={require(`./UserProfile/avatars/${avatar.avatarId}.gif`)}
-                onClick={() => setAvatarId(avatar.avatarId)}
-                key={avatar.avatarId}
-                alt={avatar.text}
-              />
-            ))}
-          </div>
-        </section>
-      </label>
+    <center>
+      <div className="App card sign-up">
+        <label>
+          Name
+          <input
+            type="text"
+            placeholder="Your Name"
+            name="name"
+            onChange={(event) => setName(event.target.value)}
+          />
+        </label>
+        <label>
+          Email
+          <input
+            type="email"
+            placeholder="Your Email"
+            name="email"
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            placeholder="min. 8 characters"
+            name="password"
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </label>
+        <label>
+          Location
+          <input
+            type="location"
+            placeholder="ex. Warschauer Strasse 10"
+            name="location"
+            onChange={(event) => setLocation(event.target.value)}
+          />
+        </label>
+        <label>
+          Description
+          <br />
+          <textarea
+            rows="4"
+            placeholder="A bit about yourself"
+            name="description"
+            onChange={(event) => setDescription(event.target.value)}
+          />
+        </label>
+        <label>
+          Hobbies
+          <Multiselect
+            name="hobbies"
+            displayValue="name"
+            onRemove={handleChange}
+            onSelect={handleChange}
+            options={hobbiesList}
+          />
+        </label>
+        <label>
+          <section>
+            {" "}
+            Choose an Avatar
+            <div>
+              {avatarList.map((avatar) => (
+                <img
+                  className="profile-photo-selection"
+                  src={require(`./UserProfile/avatars/${avatar.avatarId}.gif`)}
+                  onClick={() => setAvatarId(avatar.avatarId)}
+                  key={avatar.avatarId}
+                  alt={avatar.text}
+                />
+              ))}
+            </div>
+          </section>
+        </label>
 
-      <button onClick={submitUserRegisteration}>Register</button>
-    </div>
+        <button onClick={submitUserRegisteration}>Register</button>
+      </div>
+    </center>
   );
 };
 

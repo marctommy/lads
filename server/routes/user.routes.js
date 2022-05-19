@@ -33,4 +33,25 @@ router.put("/:id", async (req, res) => {
     });
 });
 
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const { newEventId, eventName } = req.body;
+
+  const loggedInUser = await User.findById(id);
+  const { eventsAttended } = loggedInUser;
+  // Id already in array?
+  const updatedEvents = [...eventsAttended, newEventId, eventName];
+
+  User.findByIdAndUpdate(id, {
+    eventsAttended: updatedEvents,
+  })
+    .then((deletedEvent) => {
+      res.json(deletedEvent);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 module.exports = router;

@@ -7,6 +7,8 @@ import MapsInput from "./MapsInput";
 export const TemplateActivity = ({ loggedInUser }) => {
   const navigate = useNavigate();
 
+  const [location, setLocation] = useState("");
+
   const [newActivity, setNewActivity] = useState({
     name: "",
     description: "",
@@ -17,13 +19,18 @@ export const TemplateActivity = ({ loggedInUser }) => {
     category: "",
   });
 
+  const getData = (data) => {
+    console.log("coming from MapsInput", data);
+    setLocation(data);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const response = await axios.post(
         "http://localhost:3005/api/activities/create",
-        { ...newActivity, user: loggedInUser._id }
+        { ...newActivity, user: loggedInUser._id, location: location }
       );
       navigate("/activities");
     } catch (error) {
@@ -201,7 +208,7 @@ export const TemplateActivity = ({ loggedInUser }) => {
 
             <label>
               Location
-              <MapsInput />
+              <MapsInput getData={getData} />
             </label>
 
             <center>

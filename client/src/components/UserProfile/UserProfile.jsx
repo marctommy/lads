@@ -16,7 +16,7 @@ export default function UserProfile({ loggedInUser, setLoggedInUser }) {
     location,
     description,
   } = loggedInUser;
-
+  console.log("loggedInUser", loggedInUser);
   const handleWelcome = () => {
     setShowChatbubble(!showChatbubble);
   };
@@ -62,6 +62,14 @@ export default function UserProfile({ loggedInUser, setLoggedInUser }) {
         </center>
         <hr /> <strong className="profile-text">Bio: </strong>
         <p className="profile-text fst-italic">"{description}"</p>
+        {eventsAttended?.map((oneEvent) => {
+          return (
+            <p className="profile-text" key={loggedInUser.eventsAttended.id}>
+              {" "}
+              You recently attended: {oneEvent.name || "Event"}
+            </p>
+          );
+        })}
         <button
           onClick={() => setShowEditForm(!showEditForm)}
           className="btn btn-outline-dark btn-sm btn-floating"
