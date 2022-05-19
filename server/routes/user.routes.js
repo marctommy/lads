@@ -5,13 +5,20 @@ const User = require("../models/User.model");
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
 
-  const { name, description, hobbies, avatarId, newEventId, location } =
-    req.body;
+  const {
+    name,
+    description,
+    hobbies,
+    avatarId,
+    newEventId,
+    location,
+    newEventName,
+  } = req.body;
 
   const loggedInUser = await User.findById(id);
   const { eventsAttended } = loggedInUser;
   // Id already in array?
-  const updatedEvents = [...eventsAttended, newEventId];
+  const updatedEvents = [...eventsAttended, newEventId, newEventName];
 
   User.findByIdAndUpdate(
     id,
@@ -36,12 +43,12 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
 
-  const { newEventId, eventName } = req.body;
+  const { newEventId, newEventName } = req.body;
 
   const loggedInUser = await User.findById(id);
   const { eventsAttended } = loggedInUser;
   // Id already in array?
-  const updatedEvents = [...eventsAttended, newEventId, eventName];
+  const updatedEvents = [...eventsAttended, newEventId, newEventName];
 
   User.findByIdAndUpdate(id, {
     eventsAttended: updatedEvents,

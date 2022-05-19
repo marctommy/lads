@@ -9,6 +9,9 @@ body {
 
 .login {
   background-image: url(./login.gif);
+  background-size: 800px;
+  background-repeat: no-repeat;
+
   padding: 40px;
   width: 50vw;
   height: 50vh;
@@ -45,4 +48,8 @@ body {
 
 .home-text {
   color: rgb(70, 70, 70);
+}
+
+.parent {
+  justify-content: center;
 }

@@ -19,34 +19,41 @@ const Login = (props) => {
   };
 
   return (
-    <div>
+    <div className="parent">
       <center>
         <div className="card login">
-          <input
-            type="text"
-            placeholder="Email"
-            onChange={handleEmail}
-            value={email}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={handlePasswordChange}
-            value={password}
-          />
-          <button
-            type="button"
-            className="btn btn-outline-dark btn-sm btn-floating"
-            onClick={handleSubmit}
-          >
-            Login
-          </button>
-          <Link
-            className="btn btn-outline-dark btn-sm btn-floating"
-            to="/signup"
-          >
-            Want to create a new account?
-          </Link>
+          <div>
+            <input
+              style={{ marginTop: 200 }}
+              type="text"
+              placeholder="Email"
+              onChange={handleEmail}
+              value={email}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={handlePasswordChange}
+              value={password}
+            />
+          </div>
+          <div>
+            <button
+              type="button"
+              className="btn btn-outline-dark btn-sm btn-floating"
+              onClick={handleSubmit}
+            >
+              Login
+            </button>
+          </div>
+          <div>
+            <Link
+              className="btn btn-outline-dark btn-sm btn-floating"
+              to="/signup"
+            >
+              Want to create a new account?
+            </Link>
+          </div>
         </div>
       </center>
     </div>

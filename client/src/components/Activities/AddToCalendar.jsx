@@ -15,7 +15,7 @@ const AddToCalendar = ({ activityToBeAdded }) => {
       onSubmit={(e) => {
         e.preventDefault();
         atcb_action({
-          name: event.name + "*LADS event",
+          name: event.name + " *LADS event",
           startDate: event.startDate,
           endDate: event.endDate,
           location: event.location,

@@ -4,14 +4,11 @@ import { Buttons } from "./Activities/Buttons";
 import "./Home.css";
 import Story from "./Story";
 
-const Home = (props) => {
-  const { loggedInUser } = props;
-
+const Home = ({ loggedInUser }) => {
   return (
     <div>
       <Story user={loggedInUser} />
-
-      <Buttons />
+      {loggedInUser ? <Buttons /> : null}
     </div>
   );
 };

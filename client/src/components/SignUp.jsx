@@ -62,7 +62,7 @@ const SignUp = (props) => {
 
   return (
     <center>
-      <div className="App card sign-up">
+      <div className="App card sign-up home-text" style={{ paddingBottom: 30 }}>
         <label>
           Name
           <input
@@ -91,10 +91,10 @@ const SignUp = (props) => {
           />
         </label>
         <label>
-          Location
+          Neighbourhood
           <input
             type="location"
-            placeholder="ex. Warschauer Strasse 10"
+            placeholder="ex. Kreuzberg"
             name="location"
             onChange={(event) => setLocation(event.target.value)}
           />
@@ -137,7 +137,12 @@ const SignUp = (props) => {
           </section>
         </label>
 
-        <button onClick={submitUserRegisteration}>Register</button>
+        <button
+          className="btn btn-outline-dark btn-sm btn-floating"
+          onClick={submitUserRegisteration}
+        >
+          Register
+        </button>
       </div>
     </center>
   );

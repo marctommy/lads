@@ -22,6 +22,7 @@ const Story = ({ user }) => {
               alt="First slide"
             />
             <Carousel.Caption>
+              {user ? <h4>Hi {user.name}</h4> : null}{" "}
               <h5>Welcome to the LADs community! </h5>
             </Carousel.Caption>
           </Carousel.Item>
@@ -54,7 +55,6 @@ const Story = ({ user }) => {
             />
 
             <Carousel.Caption>
-              <strong> A happy wife means a happy relationship.</strong>
               <p>
                 Tap into your hobbies and experience fatherhood in a completely
                 new way!
