@@ -3,10 +3,12 @@ import axios from "axios";
 const getPreviousMessages = (activityId) => axios.get(`/chat/${activityId}`);
 
 const sendMessage = (user, newMessage, activityId) =>
-  axios.post(`/chat/${activityId}/conversation/new-message/`, {
+  axios.post("/chat/new-message/", {
     sendBy: user,
     newMessage,
   });
+
+// ${activityId}/conversation
 
 const checkLoggedIn = () => axios.get("/auth/loggedin");
 

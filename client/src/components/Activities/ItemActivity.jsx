@@ -19,24 +19,24 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
     user,
   } = activity;
 
-  const [isAttended, setIsAttended] = useState(
-    loggedInUser.eventsAttended?.includes(_id)
-  );
+  // const [isAttended, setIsAttended] = useState(
+  //   loggedInUser.eventsAttended?.includes(_id)
+  // );
 
-  const handleAttend = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.put(
-        `http://localhost:3005/api/user/${loggedInUser._id}`,
-        {
-          newEventId: _id,
-        }
-      );
-      setIsAttended(true);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleAttend = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     const response = await axios.put(
+  //       `http://localhost:3005/api/user/${loggedInUser._id}`,
+  //       {
+  //         newEventId: _id,
+  //       }
+  //     );
+  //     setIsAttended(true);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className="activity-list">
@@ -91,14 +91,14 @@ export const ItemActivity = ({ activity, loggedInUser }) => {
 
                     <br />
                     <div className="button-container">
-                      <button
+                      {/* <button
                         disabled={isAttended}
                         onClick={handleAttend}
                         type="button"
                         className="btn btn-outline-dark btn-sm btn-floating"
                       >
                         {isAttended ? "attended" : "attend"}
-                      </button>
+                      </button> */}
                       <AttendeeToggle
                         activity={activity}
                         loggedInUser={loggedInUser}
