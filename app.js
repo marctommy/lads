@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
+// if (process.env.NODE_ENV !== "production") {
+require("dotenv").config();
+// }
 
 const cors = require("cors");
 const express = require("express");
@@ -36,8 +36,10 @@ app.use(
     origin: process.env.ORIGIN,
   })
 );
+//? hello
 
 const url = process.env.MONGO_URI;
+console.log("🚀 ~ file: app.js ~ line 42 ~ url", url);
 let store = new MongoStore({
   mongoUrl: url,
   collection: "sessions",
